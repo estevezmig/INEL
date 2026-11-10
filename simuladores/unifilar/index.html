@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>INEL · Generador de esquemas unifilares · rev6</title>
+<style>
+:root{--bg:#0d141d;--panel:#151f2b;--panel2:#1c2936;--line:#2c3b4b;--text:#ecf2f6;--muted:#9dafbd;--orange:#f59e32;--orange2:#ffbd70;--red:#ff7878;--green:#86d8b2}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-ui,-apple-system,Segoe UI,Arial,sans-serif}.top{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-bottom:1px solid var(--line);background:#101a25;gap:10px;flex-wrap:wrap}.brand{display:flex;align-items:center;gap:13px}.logo{font-size:24px;color:#1b1310;background:var(--orange);font-weight:900;border-radius:10px;padding:8px 12px;letter-spacing:-1px}.brand strong{font-size:19px}.brand small{display:block;color:var(--muted);font-size:12px}.pill{background:#34281b;color:var(--orange2);border:1px solid #6d4924;border-radius:20px;padding:5px 11px;font-size:12px}.layout{display:grid;grid-template-columns:365px minmax(0,1fr);min-height:calc(100vh - 80px)}aside{padding:18px;border-right:1px solid var(--line);max-height:calc(100vh - 75px);overflow:auto}.main{padding:20px 22px;min-width:0}.section{background:var(--panel);border:1px solid var(--line);border-radius:13px;margin-bottom:15px;padding:16px}.section h3{font-size:14px;margin:0 0 14px;display:flex;align-items:center;justify-content:space-between}.section h3 span{color:var(--orange)}.row{display:flex;align-items:center;gap:9px;margin:9px 0}.row label{flex:1;color:#c9d3dc}.field{width:100%;background:#0e1823;color:var(--text);border:1px solid #3a4c5c;border-radius:7px;padding:9px 10px;font:inherit;min-width:0}.row .field{width:155px}.mini{width:80px!important}.check{accent-color:var(--orange);width:16px;height:16px}.btn{background:var(--panel2);color:var(--text);border:1px solid #4a5c6b;border-radius:8px;padding:9px 11px;font:inherit;cursor:pointer;white-space:nowrap}.btn:hover{border-color:var(--orange)}.btn.primary{background:var(--orange);color:#1b140e;border-color:var(--orange);font-weight:800}.btn.danger{color:#ffc0b9}.btn.sm{padding:6px 9px;font-size:12px}.toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin:0 0 13px}.toolbar h2{margin:0;font-size:20px}.actions{display:flex;flex-wrap:wrap;gap:7px}.sheetwrap{background:#dbe1e6;border-radius:12px;border:1px solid #3a4957;padding:16px;overflow:auto;min-height:490px}.paper{background:#fff;box-shadow:0 4px 18px #12203025;margin:0 auto;min-width:max-content}.paper svg{display:block;max-width:none}.footnote{font-size:12px;color:var(--muted);margin:12px 0}.footnote a{color:var(--orange2)}.circuits{display:flex;flex-direction:column;gap:8px}.circuit{background:#101a25;border:1px solid var(--line);border-radius:9px;padding:10px}.circuit-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px;gap:8px}.circuit-head strong{color:var(--orange2)}.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:7px}.cgrid .wide{grid-column:span 2}.cgrid label{font-size:11px;color:var(--muted)}.cgrid input,.cgrid select{margin-top:3px;padding:7px}.circuit button{border:0;background:none;color:var(--red);cursor:pointer}.tip{font-size:12px;color:var(--muted);margin:6px 0 0}.status{background:var(--panel);border:1px solid var(--line);padding:14px 17px;border-radius:11px}.status h3{margin:0 0 8px;font-size:14px}.message{padding:6px 0;color:#ffcba0;font-size:12px;border-top:1px solid #293645}.message.ok{color:var(--green)}.preset{display:grid;grid-template-columns:1fr 1fr;gap:7px}.preset .btn{font-size:12px;white-space:normal}.hint{font-size:12px;color:#b7c4cf}.span2{grid-column:span 2}.separator{height:1px;background:var(--line);margin:13px 0}.groupcard{border:1px solid #354555;border-radius:9px;padding:9px;margin:7px 0}.groupcard b{color:var(--orange2)}.groupcard .row{margin:6px 0}.note{border-left:3px solid var(--orange);background:#36291c;padding:9px 12px;color:#ffe0b9;border-radius:5px;font-size:12px;margin-bottom:12px}@media(max-width:1050px){.layout{grid-template-columns:1fr}aside{max-height:none;border-right:0;border-bottom:1px solid var(--line)}.main{padding:12px}.sheetwrap{padding:7px}}
+
+.advanced{grid-column:span 2;border-top:1px solid #344251;padding-top:8px;margin-top:3px}.advanced summary{color:var(--orange2);font-weight:600;cursor:pointer}.advanced .row{margin-top:8px}.advanced label{font-size:12px}.degree{font-size:12px;font-weight:700;color:#ffe0ae;white-space:nowrap}.autoChip{font-size:11px;color:#b8e8ce;background:#1b3931;border:1px solid #376153;border-radius:5px;padding:2px 6px}.detailHelp{font-size:11px;color:var(--muted);display:block;margin-top:6px}
+
+.assignments{border-top:1px solid #344555;padding-top:8px;margin-top:9px}.assignments summary{cursor:pointer;color:var(--orange2);font-size:12px;font-weight:650}.assign-list{max-height:215px;overflow:auto;margin-top:8px;padding:3px;background:#0e1823;border-radius:7px}.assign-row{display:flex;align-items:center;gap:8px;padding:6px;border-bottom:1px solid #263544;cursor:pointer;font-size:12px}.assign-row:last-child{border:0}.assign-row input{flex:0 0 auto}.assign-row span{min-width:0}.assign-row b{display:block;font-size:12px;color:var(--text)}.assign-row small{display:block;color:var(--muted);font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:220px}.assign-hint{display:block;color:var(--muted);font-size:11px;margin-top:7px}.group-count{font-size:11px;color:var(--muted);font-weight:400}
+
+/* rev4: interacción SVG para reasignación visual */
+#drawing .drag-circuit{cursor:grab;touch-action:none}
+#drawing .drag-circuit:active{cursor:grabbing}
+#drawing.dragging .drag-circuit{opacity:.72}
+#drawing .drop-target{fill:#f59e32;fill-opacity:0;stroke:#d67911;stroke-opacity:0;stroke-width:2;stroke-dasharray:7 5;pointer-events:none;transition:fill-opacity .12s,stroke-opacity .12s}
+#drawing.dragging .drop-target{fill-opacity:.075;stroke-opacity:.6}
+#drawing.dragging .drop-target.selected{fill-opacity:.22;stroke-opacity:1}
+#drawing .drag-circuit.moving{opacity:.28}
+#dragStatus{font-size:12px;color:var(--orange2);min-height:18px;margin:7px 0 0}
+
+/* rev5: listado para compras (sin inventar especificaciones no definidas) */
+.materials{background:#15212e;border:1px solid #e19335;border-radius:12px;padding:15px 17px;margin-bottom:14px}
+.materials[hidden]{display:none!important}.material-title{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.material-title h3{margin:0;font-size:16px}.material-sub{color:var(--muted);font-size:12px;margin:6px 0 13px}
+.material-actions{display:flex;flex-wrap:wrap;gap:7px}
+.table-scroll{overflow-x:auto}.materials table{width:100%;border-collapse:collapse;font-size:12px;min-width:730px}
+.materials th,.materials td{border-bottom:1px solid #334455;padding:8px 9px;text-align:left;vertical-align:top}
+.materials th{background:#283a4a;color:#f9bd70;white-space:nowrap}.materials td.qty{font-weight:800;text-align:center;color:#f5b764}
+.materials h4{margin:15px 0 7px;font-size:13px}.materials .missing{color:#b5c3cd;font-size:11px}.materials .material-warning{color:#ffcc96;font-size:12px;margin:11px 0 0}
+
+/* INEL rev6 · Portada y navegación */
+.back-nav{background:#0b121b;border-bottom:1px solid var(--line);padding:8px 24px}
+.back-nav a{color:var(--orange2);text-decoration:none;font-size:13px;font-weight:650;display:inline-flex;align-items:center;gap:7px}
+.back-nav a:hover,.back-nav a:focus-visible{text-decoration:underline;color:#fff}
+#appShell[hidden],#accessGate[hidden]{display:none!important}
+.gate{min-height:100vh;display:grid;place-items:center;padding:22px;background:radial-gradient(circle at 50% 5%,#5a341c 0,transparent 52%),var(--bg)}
+.gate-box{width:min(410px,100%);background:var(--panel);border:1px solid #6d4924;border-radius:17px;padding:28px;box-shadow:0 20px 50px #050a0f99}
+.gate-logo{display:inline-block;background:var(--orange);color:#211409;border-radius:10px;padding:9px 14px;font-size:23px;font-weight:900;letter-spacing:.02em}
+.gate-box h1{font-size:22px;line-height:1.2;margin:20px 0 8px}
+.gate-box p{color:var(--muted);font-size:13px;line-height:1.5}
+.gate-box label{display:block;font-weight:650;margin:19px 0 7px}
+.gate-box input{width:100%;background:#0e1823;color:#fff;border:1px solid #566775;border-radius:9px;padding:12px 13px;font:inherit}
+.gate-box .btn{margin-top:12px;width:100%;padding:12px}
+.gate-error{color:#ff9c9c!important;margin:10px 0 0;min-height:19px}
+.gate-back{display:block;text-align:center;color:var(--orange2);margin-top:16px;font-size:13px}
+</style></head><body>
+<div id="accessGate" class="gate">
+  <div class="gate-box">
+    <div class="gate-logo">INEL</div>
+    <h1>Generador de esquemas unifilares</h1>
+    <p>Material didáctico de Instalaciones Eléctricas Interiores. Introduce la contraseña para acceder.</p>
+    <form id="accessForm">
+      <label for="accessPassword">Contraseña</label>
+      <input id="accessPassword" type="password" autocomplete="current-password" required autofocus>
+      <button class="btn primary" type="submit">Acceder al simulador</button>
+      <p class="gate-error" id="accessError" role="alert" aria-live="polite"></p>
+    </form>
+    <a class="gate-back" href="https://estevezmig.github.io/INEL/">← Volver a INEL</a>
+  </div>
+</div>
+<div id="appShell" hidden>
+<nav class="back-nav"><a href="https://estevezmig.github.io/INEL/">← Volver a INEL</a></nav>
+<header class="top"><div class="brand"><div class="logo">INEL</div><div><strong>Generador de esquemas unifilares</strong><small>Instalaciones Eléctricas Interiores · CGMP de viviendas</small></div></div><div class="pill">Simulador didáctico · rev6 · 230 V</div></header>
+<div class="layout"><aside>
+<div class="section"><h3>Configuración general <span>01</span></h3><div class="row"><label for="presets">Ejemplos</label><select id="presets" class="field"><option value="basic">Básica · C1 a C5</option><option value="split">Básica · C4 desdoblado</option><option value="high">Elevada · 8 circuitos</option><option value="custom">Personalizado</option></select></div><div class="row"><label for="project">Nombre del proyecto</label><input class="field" id="project" value="Vivienda · esquema unifilar"></div><div class="row"><label for="iga">IGA (2 polos)</label><select class="field" id="iga"><option>25</option><option>32</option><option>40</option><option>50</option><option>63</option></select></div><div class="row"><label for="spd">Protección sobretensiones</label><input id="spd" type="checkbox" class="check" checked></div><div class="row"><label for="spdname">Tipo de protección</label><select id="spdname" class="field"><option value="trans">Transitorias</option><option value="both">Permanentes + transitorias</option></select></div><div class="row"><label for="area">Superficie útil (m²)</label><input id="area" class="field" type="number" min="0" step="1" value="90"></div><div class="row"><label>Grado de electrificación</label><output id="degree" class="degree">Básica</output></div><p class="tip">Si la superficie útil supera 160 m²: electrificación elevada y circuito C7 obligatorio (ITC-BT-10 y 25).</p><div class="row"><label for="powers">Potencia prevista (W)</label><input id="powers" class="field" type="number" min="0" step="10" value="5750"></div></div>
+<div class="section"><h3>Diferenciales <span>02</span></h3><div id="groupList"></div><button class="btn sm" id="addGroup">+ Añadir diferencial</button><p class="tip">Asigna cada circuito al diferencial correspondiente. También puedes arrastrar un circuito desde el esquema y soltarlo sobre la barra de otro diferencial. Máximo: 5 circuitos por diferencial.</p></div>
+<div class="section"><h3>Circuitos <span id="circuitCount">03</span></h3><div id="circuitList" class="circuits"></div><div class="separator"></div><div class="actions"><button class="btn primary" id="addCircuit">+ Añadir circuito</button><button class="btn" id="autoGroups">Distribuir en diferenciales</button></div></div>
+<div class="section"><h3>Guardar trabajo</h3><div class="actions"><button class="btn sm" id="saveJson">Guardar JSON</button><button class="btn sm" id="loadJson">Abrir JSON</button><input type="file" id="jsonFile" accept=".json,application/json" hidden></div></div>
+</aside><section class="main"><div class="toolbar"><h2>Esquema unifilar del CGMP</h2><div class="actions"><button class="btn primary sm" id="materialsBtn" aria-expanded="false" aria-controls="materialsPanel">Listado de materiales</button><button class="btn sm" id="exportSvg">SVG</button><button class="btn sm" id="exportPng">PNG</button><button class="btn sm" id="exportJpg">JPG</button><button class="btn primary sm" id="exportPdf">Exportar PDF</button></div></div>
+<div class="note">La simbología y la configuración deben revisarse antes de utilizar el esquema como documentación de una instalación real.</div>
+<div class="materials" id="materialsPanel" hidden>
+  <div class="material-title"><h3>Listado de materiales del CGMP</h3><div class="material-actions"><button class="btn sm" id="materialsCsv">Descargar CSV</button><button class="btn sm" id="materialsPrint">Imprimir / PDF</button><button class="btn sm" id="materialsClose" aria-label="Cerrar listado de materiales">Cerrar ×</button></div></div>
+  <p class="material-sub">Cantidades calculadas a partir del esquema actual. Se agrupan los dispositivos que tienen las mismas características introducidas.</p>
+  <div id="materialsContent"></div>
+</div>
+<div class="sheetwrap"><div class="paper" id="sheet"></div></div><div id="dragStatus" aria-live="polite">Arrastra un circuito sobre la barra de otro diferencial para cambiar su asignación.</div><p class="footnote">Vista generada en SVG vectorial: las líneas y los textos conservan su nitidez al ampliar. Arrastra desde el símbolo o la etiqueta de un circuito hasta el área superior de otro diferencial para reasignarlo. Los diagramas se organizan automáticamente por diferenciales. El PDF se exporta con jsPDF cuando está disponible y, en caso contrario, se abre el diálogo de impresión para «Guardar como PDF».</p>
+<div class="status"><h3>Comprobaciones didácticas del REBT</h3><div id="warnings"></div></div><p class="footnote">Referencias: <a href="https://www.boe.es/eli/es/rd/2002/08/02/842/con" target="_blank" rel="noopener">REBT (BOE), ITC-BT-17 e ITC-BT-25</a>. Las verificaciones implementadas son parciales: no sustituyen el dimensionamiento, las comprobaciones de instalación ni un proyecto.</p>
+</section></div>
+</div><!-- /appShell -->
+<script>
+// Contraseña de acceso visual para uso docente; no restringe el acceso al código en un GitHub público.
+(function(){
+ const gate=document.getElementById("accessGate"), app=document.getElementById("appShell");
+ const form=document.getElementById("accessForm"), field=document.getElementById("accessPassword"), error=document.getElementById("accessError");
+ const grant=()=>{gate.hidden=true;app.hidden=false;};
+ try{if(sessionStorage.getItem("inel_unifilar_auth")==="ok"){grant();}}catch(e){}
+ form.addEventListener("submit",event=>{event.preventDefault();if(field.value==="INEL_2026"){error.textContent="";field.value="";try{sessionStorage.setItem("inel_unifilar_auth","ok");}catch(e){} grant();}else{error.textContent="Contraseña incorrecta.";field.select();}});
+})();
+
+'use strict';
+const S={groups:[],circuits:[],iga:25,spd:true,spdname:'trans',power:5750,area:90,project:'Vivienda · esquema unifilar'};
+const $=id=>document.getElementById(id);
+const catalog={C1:{name:'Alumbrado',a:10,s:'1,5',tube:16},C2:{name:'Tomas de uso general y frigorífico',a:16,s:'2,5',tube:20},C3:{name:'Cocina y horno',a:25,s:'6',tube:25},C4:{name:'Lavadora, lavavajillas y termo',a:20,s:'4',tube:20},C5:{name:'Baño y auxiliares de cocina',a:16,s:'2,5',tube:20},C6:{name:'Alumbrado adicional',a:10,s:'1,5',tube:16},C7:{name:'Tomas adicionales',a:16,s:'2,5',tube:20},C8:{name:'Calefacción eléctrica',a:25,s:'6',tube:25},C9:{name:'Aire acondicionado',a:25,s:'6',tube:25},C10:{name:'Secadora',a:16,s:'2,5',tube:20},C11:{name:'Automatización y seguridad',a:10,s:'1,5',tube:16},C12:{name:'Circuito adicional',a:16,s:'2,5',tube:20},C13:{name:'Recarga de vehículo eléctrico',a:16,s:'2,5',tube:20},Otro:{name:'Circuito personalizado',a:16,s:'2,5',tube:20}};
+let uid=1;const fresh=()=>uid++;
+function mkCircuit(code,group=0,extra={}){return {id:fresh(),code,label:extra.label??code,desc:extra.desc??catalog[code].name,a:extra.a??catalog[code].a,s:extra.s??catalog[code].s,tube:extra.tube??catalog[code].tube,group,points:extra.points??0,autoParent:extra.autoParent??null,autoIndex:extra.autoIndex??null,autoArea:extra.autoArea??false};}
+function newGroup(){return {id:fresh(),a:Math.max(40,S.iga),ma:30};}
+function preset(type){S.iga=type==='high'?40:type==='split'?32:25;S.spd=true;S.spdname='trans';S.power=type==='high'?9200:type==='split'?7360:5750;S.area=type==='high'?175:type==='split'?105:90;S.project='Vivienda · '+(type==='high'?'electrificación elevada': 'electrificación básica');S.groups=[newGroup()];S.circuits=[];
+if(type==='basic'){['C1','C2','C3','C4','C5'].forEach(k=>S.circuits.push(mkCircuit(k,S.groups[0].id)));}
+if(type==='split'){S.groups.push(newGroup());[['C1','C1-a','Alumbrado'],['C2','C2-a','Tomas de uso general'],['C3','C3','Cocina y horno'],['C4','C4-1','Lavadora'],['C4','C4-2','Lavavajillas'],['C4','C4-3','Termo eléctrico'],['C5','C5','Baño y auxiliares cocina']].forEach((x,i)=>S.circuits.push(mkCircuit(x[0],S.groups[i<3?0:1].id,{label:x[1],desc:x[2],...(x[0]==='C4'?{a:16,s:'2,5',tube:20}:{})})));}
+if(type==='high'){S.groups.push(newGroup());['C1','C2','C3','C10','C4','C5','C7','C9'].forEach((k,i)=>S.circuits.push(mkCircuit(k,S.groups[i<4?0:1].id)));}
+syncAreaCircuit();syncControls();render();}
+function syncControls(){$('iga').value=S.iga;$('spd').checked=S.spd;$('spdname').value=S.spdname;$('powers').value=S.power;$('project').value=S.project;$('area').value=S.area??0;}
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function renderGroups(){
+ const el=$('groupList');
+ el.innerHTML=S.groups.map((g,i)=>{
+  const assigned=S.circuits.filter(c=>c.group===g.id).length;
+  return `<div class="groupcard"><div class="circuit-head"><b>DIF ${i+1} <span class="group-count">(${assigned} circuitos)</span></b>${S.groups.length>1?`<button class="btn danger sm" data-delgroup="${g.id}">Eliminar</button>`:''}</div>
+  <div class="row"><label>Intensidad nominal (A)</label><select class="field mini" data-g="${g.id}" data-key="a">${[25,40,63,80,100].map(a=>`<option ${a==g.a?'selected':''}>${a}</option>`).join('')}</select></div>
+  <div class="row"><label>Sensibilidad (mA)</label><select class="field mini" data-g="${g.id}" data-key="ma">${[10,30,100,300].map(a=>`<option ${a==g.ma?'selected':''}>${a}</option>`).join('')}</select></div>
+  <details class="assignments" ${g.assignOpen?'open':''} data-assign-details="${g.id}"><summary>Asignar circuitos a este diferencial</summary>
+  <div class="assign-list">${S.circuits.length?S.circuits.map(c=>`<label class="assign-row"><input type="checkbox" class="check" data-assign-c="${c.id}" data-assign-g="${g.id}" ${c.group===g.id?'checked':''}><span><b>${esc(c.label)}</b><small>${esc(c.desc)}</small></span></label>`).join(''):'<small>Añade primero un circuito.</small>'}</div>
+  <small class="assign-hint">Marca un circuito para moverlo aquí. Se desmarcará automáticamente del diferencial anterior.</small>
+  </details></div>`;
+ }).join('');
+}
+
+function renderCircuits(){const el=$('circuitList');$('circuitCount').textContent=String(S.circuits.length).padStart(2,'0');el.innerHTML=S.circuits.map((c,i)=>{const root=['C1','C2','C5'].includes(c.code)&&!c.autoParent, limits={C1:30,C2:20,C5:6},units={C1:'puntos de luz',C2:'tomas de uso general',C5:'tomas de baño y cocina'};return `<div class="circuit"><div class="circuit-head"><strong>${esc(c.label)} <small>· circuito ${i+1}</small></strong>${(c.autoParent||c.autoArea)?'<span class="autoChip">Generado automáticamente</span>':`<button title="Eliminar circuito" data-del="${c.id}">Eliminar ×</button>`}</div><div class="cgrid"><label>Tipo<select class="field" data-c="${c.id}" data-key="code" ${(c.autoParent||c.autoArea)?'disabled':''}>${Object.keys(catalog).map(k=>`<option value="${k}" ${c.code===k?'selected':''}>${k} · ${esc(catalog[k].name)}</option>`).join('')}</select></label><label>Identificación<input class="field" data-c="${c.id}" data-key="label" value="${esc(c.label)}"></label><label class="wide">Uso / descripción<input class="field" data-c="${c.id}" data-key="desc" value="${esc(c.desc)}"></label><label>PIA (A)<input class="field" type="number" min="1" data-c="${c.id}" data-key="a" value="${esc(c.a)}"></label><label>Diferencial<select class="field" data-c="${c.id}" data-key="group">${S.groups.map((g,j)=>`<option value="${g.id}" ${g.id===c.group?'selected':''}>DIF ${j+1}</option>`).join('')}</select></label><label>Sección (mm²)<input class="field" data-c="${c.id}" data-key="s" value="${esc(c.s)}"></label><label>Tubo (mm)<input class="field" type="number" min="1" data-c="${c.id}" data-key="tube" value="${esc(c.tube)}"></label>${root?`<details class="advanced" ${c.points>0?'open':''}><summary>Avanzado · puntos de utilización</summary><div class="row"><label>${units[c.code]} (total)</label><input type="number" class="field mini" min="0" max="1000" step="1" value="${c.points||0}" data-c="${c.id}" data-key="points"></div><span class="detailHelp">Máximo ${limits[c.code]} por circuito. Si se supera, se crean ${c.code==='C1'?'C6':c.code==='C2'?'C7':'C12'} adicionales de forma automática. Un valor de 0 significa «no indicado».</span></details>`:(c.autoParent||c.autoArea)?`<div class="advanced"><span class="detailHelp">Puntos asignados a este circuito: ${c.points}. Edita el total en el circuito principal.</span></div>`:''}</div></div>`;}).join('');}
+function reconcileAutoCircuits(){const spec={C1:['C6',30,'Alumbrado adicional'],C2:['C7',20,'Tomas adicionales'],C5:['C12',6,'Baño y auxiliares de cocina (adicional)']};const roots=S.circuits.filter(c=>!c.autoParent&&spec[c.code]);const neededIds=new Set();for(const root of roots){const [code,limit,desc]=spec[root.code];const points=Math.max(0,Math.min(1000,Math.floor(Number(root.points)||0)));root.points=points;const extraCount=points>limit?Math.ceil(points/limit)-1:0;for(let i=1;i<=extraCount;i++){const key=`${root.id}:${i}`;neededIds.add(key);let c=S.circuits.find(c=>c.autoParent===root.id&&c.autoIndex===i);if(!c){const taken=S.circuits.filter(c=>c.autoParent===root.id).length;const group=S.groups.find(g=>S.circuits.filter(x=>x.group===g.id).length<5)||S.groups[S.groups.push(newGroup())-1];c=mkCircuit(code,group.id,{label:i===1?code:`${code}-${i}`,desc,autoParent:root.id,autoIndex:i});S.circuits.push(c);}c.points=Math.min(limit,points-i*limit);}}S.circuits=S.circuits.filter(c=>!c.autoParent||neededIds.has(`${c.autoParent}:${c.autoIndex}`));}
+// ITC-BT-25: en superficie util superior a 160 m² debe existir un C7.
+// No se destruyen circuitos manuales y se evita duplicar un C7 ya presente.
+function syncAreaCircuit(){
+ S.area=Math.max(0,Number(S.area)||0);
+ if(S.area>160){
+  const hasOtherC7=S.circuits.some(c=>c.code==='C7'&&!c.autoArea);
+  if(hasOtherC7)S.circuits=S.circuits.filter(c=>!c.autoArea);
+  else if(!S.circuits.some(c=>c.autoArea)){
+   let g=S.groups.find(g=>S.circuits.filter(c=>c.group===g.id).length<5);
+   if(!g){g=newGroup();S.groups.push(g);}
+   S.circuits.push(mkCircuit('C7',g.id,{label:'C7',desc:'Tomas adicionales · superficie > 160 m²',autoArea:true}));
+  }
+ }else S.circuits=S.circuits.filter(c=>!c.autoArea);
+ if(S.area>160){S.power=Math.max(S.power,9200);S.iga=Math.max(S.iga,40);for(const g of S.groups)g.a=Math.max(g.a,S.iga);}
+}
+function isElevated(){return S.area>160||S.circuits.some(c=>['C6','C7','C8','C9','C10','C11','C12','C13'].includes(c.code));}
+function addWarning(s,ok=false){return `<div class="message ${ok?'ok':''}">${ok?'✓':'⚠'} ${esc(s)}</div>`;}
+function warnings(){let v=[];if(S.area>160&&!S.circuits.some(c=>c.code==='C7'))v.push('Superficie útil superior a 160 m²: es obligatorio disponer de un circuito C7 (ITC-BT-25, 2.3.2).');if(S.iga<25)v.push('El IGA debe ser como mínimo de 25 A (ITC-BT-25, 2.1).');const capacity=S.iga*230;if(S.power>capacity)v.push(`Potencia prevista ${S.power} W superior a la capacidad nominal del IGA ${S.iga} A a 230 V (${capacity} W). Aumenta el IGA o revisa la previsión de carga.`);if(isElevated()&&S.power<9200)v.push('Electrificación elevada: la previsión debe ser como mínimo 9200 W (ITC-BT-10).');if(S.power<5750)v.push('La potencia prevista es inferior a 5750 W (mínimo reglamentario en viviendas de nueva construcción, ITC-BT-10).');if(S.circuits.some(c=>['C6','C7','C8','C9','C10','C11','C12','C13'].includes(c.code))&&S.power<9200)v.push('Hay circuitos de electrificación elevada: su previsión de potencia mínima es 9200 W (ITC-BT-10).');for(const [i,g] of S.groups.entries()){const n=S.circuits.filter(c=>c.group===g.id).length;if(n>5)v.push(`DIF ${i+1}: ${n} circuitos; no superar 5 por diferencial (ITC-BT-25).`);if(g.a<S.iga)v.push(`DIF ${i+1}: In ${g.a} A inferior al IGA ${S.iga} A (ITC-BT-25, 2.1).`);if(g.ma>30)v.push(`DIF ${i+1}: ${g.ma} mA; debe garantizarse protección diferencial ≤ 30 mA (ITC-BT-25, 2.1).`);if(!n)v.push(`DIF ${i+1}: no tiene circuitos asignados.`);}if(S.groups.length<Math.ceil(S.circuits.length/5))v.push('No hay suficientes diferenciales para el mínimo de uno por cada cinco circuitos (ITC-BT-25).');if(S.circuits.some(c=>c.code==='C13'))v.push('C13: revisar requisitos específicos ITC-BT-52; no se validan en esta versión.');if(!S.circuits.length)v.push('Añade al menos un circuito.');$('degree').textContent=isElevated()?'Elevada':'Básica';$('warnings').innerHTML=v.length?v.map(x=>addWarning(x)).join(''):addWarning('Sin incidencias en las comprobaciones implementadas (verificación parcial).',true);}
+function E(t,attrs={},contents=''){return `<${t} ${Object.entries(attrs).map(([k,v])=>`${k}="${esc(v)}"`).join(' ')}>${contents}</${t}>`;}
+const line=(x1,y1,x2,y2,w=1.45)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#171717" stroke-width="${w}"/>`;
+const txt=(x,y,s,size=13,anchor='middle',extra='')=>`<text x="${x}" y="${y}" font-size="${size}" text-anchor="${anchor}" font-family="Arial, Helvetica, sans-serif" fill="#181818" ${extra}>${esc(s)}</text>`;
+function wrap(str,max=15){const words=String(str).split(/\s+/),out=[];let s='';for(const w of words){if((s+' '+w).trim().length>max&&s){out.push(s);s=w;}else s=(s+' '+w).trim();}if(s)out.push(s);return out.slice(0,5);}
+function slash(x,y){return line(x-6,y+8,x+5,y-7,1.25)+line(x-2,y+9,x+9,y-6,1.25);}
+// Trazados vectoriales obtenidos de las tres imagenes de referencia. Los SVG tambien se entregan por separado.
+function switchSym(x,y,type='pia'){
+ if(type==='dif'){
+  const scale=.37,ax=49,ay=116;
+  return `<g transform="translate(${x-ax*scale} ${y-ay*scale}) scale(${scale})"><use href="#icon-diferencial"/></g>`;
+ }
+ const scale=1.0,ax=3,ay=35;
+ return `<g transform="translate(${x-ax*scale} ${y-ay*scale}) scale(${scale})"><use href="#icon-magnetotermico"/></g>`;
+}
+function spdSym(x,y){
+ const scale=.36,ax=5,ay=63;
+ return `<g transform="translate(${x-ax*scale} ${y-ay*scale}) scale(${scale})"><use href="#icon-sobretensiones"/></g>`;
+}
+function symbolDefs(){return `<defs>
+<g id="icon-magnetotermico"><path d="M20.0,12.0 L19.0,12.0 L19.0,13.0 L18.0,14.0 L18.0,15.0 L17.0,16.0 L17.0,17.0 L15.0,19.0 L15.0,20.0 L14.0,21.0 L14.0,22.0 L13.0,23.0 L13.0,24.0 L12.0,25.0 L12.0,26.0 L11.0,27.0 L11.0,28.0 L10.0,29.0 L10.0,30.0 L9.0,31.0 L9.0,32.0 L7.0,34.0 L7.0,35.0 L6.0,36.0 L6.0,37.0 L5.0,38.0 L5.0,39.0 L4.0,40.0 L4.0,41.0 L3.0,42.0 L3.0,69.0 L3.0,43.0 L4.0,42.0 L4.0,41.0 L6.0,39.0 L6.0,38.0 L7.0,37.0 L7.0,36.0 L8.0,35.0 L9.0,35.0 L10.0,36.0 L11.0,36.0 L12.0,37.0 L13.0,37.0 L14.0,38.0 L14.0,39.0 L13.0,40.0 L13.0,41.0 L12.0,42.0 L12.0,43.0 L11.0,44.0 L12.0,44.0 L13.0,45.0 L15.0,45.0 L16.0,46.0 L17.0,46.0 L19.0,48.0 L20.0,47.0 L20.0,45.0 L22.0,43.0 L24.0,43.0 L25.0,44.0 L26.0,44.0 L27.0,45.0 L29.0,45.0 L28.0,45.0 L27.0,44.0 L26.0,44.0 L25.0,43.0 L24.0,43.0 L23.0,42.0 L21.0,42.0 L21.0,43.0 L18.0,46.0 L17.0,46.0 L16.0,45.0 L15.0,45.0 L13.0,43.0 L13.0,41.0 L14.0,40.0 L14.0,39.0 L15.0,38.0 L14.0,37.0 L13.0,37.0 L11.0,35.0 L10.0,35.0 L9.0,34.0 L9.0,32.0 L10.0,31.0 L10.0,30.0 L11.0,29.0 L11.0,28.0 L12.0,27.0 L13.0,28.0 L14.0,28.0 L15.0,29.0 L16.0,29.0 L18.0,31.0 L19.0,31.0 L20.0,32.0 L21.0,32.0 L24.0,35.0 L24.0,36.0 L23.0,37.0 L23.0,38.0 L27.0,38.0 L28.0,39.0 L32.0,39.0 L32.0,38.0 L30.0,36.0 L30.0,35.0 L27.0,32.0 L26.0,32.0 L25.0,33.0 L23.0,33.0 L22.0,32.0 L21.0,32.0 L19.0,30.0 L18.0,30.0 L17.0,29.0 L16.0,29.0 L13.0,26.0 L13.0,25.0 L14.0,24.0 L14.0,23.0 L15.0,22.0 L15.0,21.0 L16.0,20.0 L16.0,19.0 L17.0,18.0 L17.0,17.0 L18.0,16.0 L18.0,15.0 L20.0,13.0 Z" fill="#111" fill-rule="evenodd" stroke="#111" stroke-width="0.5" stroke-linejoin="round"/></g>
+<g id="icon-diferencial"><path d="M177.0,51.0 L138.0,51.0 L136.0,53.0 L136.0,68.0 L135.0,69.0 L134.0,69.0 L133.0,70.0 L81.0,70.0 L80.0,69.0 L79.0,69.0 L78.0,68.0 L78.0,67.0 L80.0,65.0 L80.0,63.0 L81.0,62.0 L81.0,61.0 L82.0,60.0 L82.0,59.0 L83.0,58.0 L83.0,56.0 L86.0,53.0 L86.0,52.0 L87.0,51.0 L87.0,50.0 L88.0,49.0 L88.0,48.0 L89.0,47.0 L89.0,45.0 L91.0,43.0 L91.0,42.0 L92.0,41.0 L92.0,40.0 L94.0,38.0 L94.0,37.0 L95.0,36.0 L95.0,35.0 L96.0,34.0 L96.0,33.0 L97.0,32.0 L97.0,29.0 L96.0,28.0 L95.0,28.0 L95.0,29.0 L92.0,32.0 L92.0,33.0 L91.0,34.0 L91.0,35.0 L89.0,37.0 L89.0,39.0 L88.0,40.0 L88.0,41.0 L86.0,43.0 L86.0,45.0 L84.0,47.0 L84.0,48.0 L83.0,49.0 L83.0,50.0 L81.0,52.0 L81.0,53.0 L80.0,54.0 L80.0,56.0 L78.0,58.0 L78.0,59.0 L77.0,60.0 L77.0,61.0 L75.0,63.0 L75.0,65.0 L74.0,66.0 L74.0,67.0 L72.0,69.0 L72.0,71.0 L70.0,73.0 L70.0,74.0 L69.0,75.0 L69.0,76.0 L67.0,78.0 L67.0,79.0 L66.0,80.0 L66.0,82.0 L64.0,84.0 L64.0,86.0 L63.0,87.0 L63.0,88.0 L62.0,89.0 L61.0,89.0 L61.0,91.0 L60.0,92.0 L60.0,93.0 L58.0,95.0 L58.0,96.0 L57.0,97.0 L57.0,98.0 L56.0,99.0 L56.0,100.0 L55.0,101.0 L55.0,103.0 L52.0,106.0 L52.0,108.0 L50.0,110.0 L50.0,111.0 L49.0,112.0 L49.0,113.0 L47.0,115.0 L47.0,149.0 L46.0,150.0 L45.0,150.0 L44.0,151.0 L37.0,151.0 L36.0,152.0 L32.0,152.0 L31.0,153.0 L27.0,153.0 L25.0,155.0 L24.0,155.0 L23.0,156.0 L21.0,156.0 L18.0,159.0 L17.0,159.0 L16.0,160.0 L16.0,161.0 L15.0,162.0 L15.0,165.0 L16.0,166.0 L16.0,168.0 L20.0,172.0 L21.0,172.0 L22.0,173.0 L23.0,173.0 L24.0,174.0 L25.0,174.0 L26.0,175.0 L32.0,175.0 L33.0,176.0 L35.0,176.0 L36.0,177.0 L38.0,177.0 L39.0,178.0 L45.0,178.0 L47.0,180.0 L47.0,244.0 L51.0,244.0 L51.0,180.0 L53.0,178.0 L59.0,178.0 L60.0,177.0 L62.0,177.0 L63.0,176.0 L66.0,176.0 L67.0,175.0 L72.0,175.0 L73.0,174.0 L74.0,174.0 L75.0,173.0 L76.0,173.0 L77.0,172.0 L78.0,172.0 L83.0,167.0 L84.0,167.0 L85.0,166.0 L86.0,167.0 L88.0,167.0 L89.0,166.0 L157.0,166.0 L158.0,165.0 L158.0,164.0 L159.0,163.0 L159.0,95.0 L161.0,93.0 L177.0,93.0 L178.0,92.0 L178.0,90.0 L179.0,89.0 L179.0,54.0 L178.0,53.0 L178.0,52.0 Z M51.0,171.0 L51.0,168.0 L52.0,167.0 L53.0,167.0 L54.0,166.0 L72.0,166.0 L73.0,167.0 L74.0,167.0 L75.0,168.0 L73.0,170.0 L71.0,170.0 L69.0,172.0 L66.0,172.0 L65.0,173.0 L57.0,173.0 L56.0,174.0 L54.0,174.0 Z M22.0,168.0 L23.0,167.0 L26.0,167.0 L27.0,166.0 L45.0,166.0 L47.0,168.0 L47.0,171.0 L46.0,172.0 L46.0,173.0 L45.0,174.0 L44.0,174.0 L43.0,173.0 L34.0,173.0 L33.0,172.0 L29.0,172.0 L28.0,171.0 L27.0,171.0 L26.0,170.0 L25.0,170.0 L24.0,169.0 L23.0,169.0 Z M51.0,157.0 L53.0,155.0 L59.0,155.0 L60.0,156.0 L66.0,156.0 L67.0,157.0 L68.0,157.0 L69.0,158.0 L72.0,158.0 L73.0,159.0 L74.0,159.0 L75.0,160.0 L73.0,162.0 L53.0,162.0 L51.0,160.0 Z M47.0,157.0 L47.0,160.0 L45.0,162.0 L25.0,162.0 L24.0,161.0 L23.0,161.0 L22.0,160.0 L23.0,159.0 L25.0,159.0 L26.0,158.0 L29.0,158.0 L31.0,156.0 L38.0,156.0 L39.0,155.0 L45.0,155.0 Z M159.0,75.0 L160.0,74.0 L172.0,74.0 L174.0,76.0 L174.0,77.0 L175.0,78.0 L175.0,81.0 L174.0,82.0 L174.0,85.0 L175.0,86.0 L172.0,89.0 L160.0,89.0 L159.0,88.0 Z M140.0,76.0 L141.0,75.0 L142.0,75.0 L143.0,74.0 L154.0,74.0 L156.0,76.0 L156.0,87.0 L155.0,88.0 L154.0,88.0 L153.0,89.0 L143.0,89.0 L142.0,88.0 L141.0,88.0 L140.0,87.0 Z M76.0,74.0 L135.0,74.0 L136.0,75.0 L136.0,90.0 L137.0,91.0 L137.0,92.0 L138.0,93.0 L153.0,93.0 L154.0,94.0 L155.0,94.0 L156.0,95.0 L156.0,160.0 L155.0,161.0 L154.0,161.0 L153.0,162.0 L84.0,162.0 L83.0,161.0 L82.0,161.0 L81.0,160.0 L81.0,159.0 L80.0,158.0 L79.0,158.0 L77.0,156.0 L75.0,156.0 L74.0,155.0 L73.0,155.0 L71.0,153.0 L67.0,153.0 L66.0,152.0 L62.0,152.0 L61.0,151.0 L54.0,151.0 L53.0,150.0 L52.0,150.0 L51.0,149.0 L51.0,117.0 L52.0,116.0 L52.0,114.0 L55.0,111.0 L55.0,109.0 L57.0,107.0 L57.0,106.0 L58.0,105.0 L58.0,103.0 L60.0,101.0 L60.0,100.0 L61.0,99.0 L61.0,98.0 L63.0,96.0 L63.0,95.0 L64.0,94.0 L64.0,93.0 L65.0,92.0 L65.0,91.0 L66.0,90.0 L66.0,88.0 L68.0,86.0 L68.0,85.0 L69.0,84.0 L69.0,83.0 L71.0,81.0 L71.0,80.0 L72.0,79.0 L72.0,78.0 Z M161.0,54.0 L171.0,54.0 L172.0,55.0 L173.0,55.0 L174.0,56.0 L174.0,57.0 L175.0,58.0 L175.0,63.0 L174.0,64.0 L174.0,65.0 L175.0,66.0 L175.0,67.0 L173.0,69.0 L172.0,69.0 L171.0,70.0 L161.0,70.0 L159.0,68.0 L159.0,56.0 Z M140.0,56.0 L141.0,55.0 L142.0,55.0 L143.0,54.0 L152.0,54.0 L153.0,55.0 L155.0,55.0 L156.0,56.0 L156.0,67.0 L154.0,69.0 L153.0,69.0 L152.0,70.0 L144.0,70.0 L143.0,69.0 L142.0,69.0 L140.0,67.0 Z M51.0,0.0 L47.0,0.0 L47.0,7.0 L48.0,8.0 L49.0,8.0 L51.0,6.0 Z" fill="#111" fill-rule="evenodd" stroke="#111" stroke-width="0.5" stroke-linejoin="round"/></g>
+<g id="icon-sobretensiones"><path d="M206.0,270.0 L206.0,271.0 L207.0,272.0 L217.0,272.0 L218.0,271.0 L217.0,270.0 L217.0,269.0 L207.0,269.0 Z M199.0,258.0 L199.0,260.0 L200.0,261.0 L222.0,261.0 L223.0,260.0 L223.0,258.0 L221.0,258.0 L220.0,257.0 L200.0,257.0 Z M5.0,65.0 L5.0,67.0 L6.0,67.0 L7.0,68.0 L7.0,69.0 L8.0,69.0 L9.0,70.0 L10.0,70.0 L12.0,72.0 L13.0,72.0 L14.0,73.0 L16.0,73.0 L17.0,74.0 L18.0,74.0 L19.0,75.0 L20.0,75.0 L21.0,76.0 L22.0,76.0 L24.0,78.0 L25.0,78.0 L26.0,79.0 L27.0,79.0 L29.0,81.0 L31.0,81.0 L33.0,83.0 L34.0,83.0 L35.0,84.0 L37.0,84.0 L40.0,87.0 L42.0,87.0 L44.0,89.0 L46.0,89.0 L47.0,90.0 L48.0,90.0 L50.0,92.0 L51.0,92.0 L52.0,93.0 L53.0,93.0 L55.0,95.0 L57.0,95.0 L59.0,97.0 L60.0,97.0 L61.0,98.0 L63.0,98.0 L66.0,101.0 L68.0,101.0 L70.0,103.0 L71.0,103.0 L72.0,104.0 L74.0,104.0 L76.0,106.0 L78.0,106.0 L81.0,109.0 L83.0,109.0 L85.0,111.0 L86.0,111.0 L87.0,112.0 L89.0,112.0 L91.0,114.0 L92.0,114.0 L93.0,115.0 L209.0,115.0 L210.0,116.0 L210.0,136.0 L208.0,138.0 L192.0,138.0 L191.0,139.0 L191.0,141.0 L190.0,142.0 L190.0,149.0 L191.0,150.0 L191.0,200.0 L190.0,201.0 L190.0,210.0 L189.0,211.0 L189.0,212.0 L187.0,214.0 L187.0,215.0 L186.0,216.0 L185.0,216.0 L185.0,217.0 L182.0,220.0 L182.0,221.0 L181.0,222.0 L181.0,223.0 L180.0,224.0 L179.0,224.0 L179.0,225.0 L177.0,227.0 L164.0,227.0 L163.0,228.0 L163.0,230.0 L165.0,230.0 L166.0,231.0 L176.0,231.0 L177.0,230.0 L180.0,230.0 L182.0,228.0 L182.0,227.0 L184.0,225.0 L184.0,224.0 L187.0,221.0 L187.0,220.0 L188.0,219.0 L189.0,219.0 L190.0,220.0 L190.0,230.0 L191.0,231.0 L191.0,232.0 L192.0,232.0 L193.0,233.0 L208.0,233.0 L209.0,234.0 L209.0,235.0 L210.0,236.0 L210.0,242.0 L209.0,243.0 L209.0,244.0 L208.0,245.0 L198.0,245.0 L197.0,246.0 L196.0,246.0 L195.0,245.0 L192.0,245.0 L191.0,246.0 L189.0,246.0 L189.0,247.0 L188.0,248.0 L189.0,249.0 L233.0,249.0 L234.0,248.0 L234.0,247.0 L233.0,246.0 L227.0,246.0 L226.0,245.0 L224.0,245.0 L223.0,246.0 L222.0,245.0 L215.0,245.0 L213.0,243.0 L213.0,235.0 L215.0,233.0 L228.0,233.0 L229.0,232.0 L230.0,232.0 L231.0,231.0 L231.0,164.0 L232.0,163.0 L232.0,160.0 L233.0,159.0 L233.0,158.0 L235.0,156.0 L235.0,155.0 L238.0,152.0 L238.0,151.0 L242.0,147.0 L242.0,146.0 L246.0,142.0 L258.0,142.0 L259.0,141.0 L259.0,138.0 L244.0,138.0 L238.0,144.0 L238.0,145.0 L236.0,147.0 L236.0,148.0 L235.0,149.0 L235.0,150.0 L234.0,151.0 L233.0,151.0 L231.0,149.0 L231.0,140.0 L230.0,139.0 L230.0,138.0 L217.0,138.0 L216.0,137.0 L214.0,137.0 L213.0,136.0 L213.0,113.0 L211.0,111.0 L96.0,111.0 L95.0,110.0 L92.0,110.0 L91.0,109.0 L89.0,109.0 L87.0,107.0 L86.0,107.0 L85.0,106.0 L84.0,106.0 L82.0,104.0 L81.0,104.0 L80.0,103.0 L79.0,103.0 L78.0,102.0 L77.0,102.0 L76.0,101.0 L74.0,101.0 L72.0,99.0 L72.0,96.0 L74.0,94.0 L74.0,93.0 L75.0,92.0 L75.0,90.0 L77.0,88.0 L77.0,87.0 L78.0,86.0 L78.0,85.0 L79.0,84.0 L84.0,84.0 L87.0,87.0 L89.0,87.0 L91.0,89.0 L92.0,89.0 L93.0,90.0 L95.0,90.0 L96.0,89.0 L97.0,89.0 L97.0,88.0 L98.0,87.0 L98.0,85.0 L99.0,84.0 L99.0,83.0 L100.0,82.0 L100.0,80.0 L103.0,77.0 L103.0,75.0 L105.0,73.0 L105.0,72.0 L106.0,71.0 L106.0,66.0 L105.0,65.0 L103.0,65.0 L102.0,64.0 L100.0,64.0 L98.0,62.0 L96.0,62.0 L93.0,59.0 L93.0,57.0 L94.0,56.0 L94.0,55.0 L95.0,54.0 L95.0,53.0 L97.0,51.0 L97.0,50.0 L98.0,49.0 L98.0,48.0 L99.0,47.0 L99.0,46.0 L100.0,45.0 L100.0,42.0 L101.0,41.0 L101.0,40.0 L98.0,40.0 L98.0,41.0 L97.0,42.0 L97.0,43.0 L95.0,45.0 L95.0,46.0 L94.0,47.0 L94.0,48.0 L92.0,50.0 L92.0,52.0 L91.0,53.0 L91.0,54.0 L89.0,56.0 L89.0,58.0 L88.0,59.0 L88.0,60.0 L89.0,61.0 L89.0,62.0 L91.0,64.0 L93.0,64.0 L94.0,65.0 L95.0,65.0 L96.0,66.0 L97.0,66.0 L98.0,67.0 L99.0,67.0 L101.0,69.0 L101.0,71.0 L100.0,72.0 L100.0,74.0 L98.0,76.0 L98.0,77.0 L97.0,78.0 L97.0,80.0 L95.0,82.0 L95.0,83.0 L94.0,84.0 L90.0,84.0 L88.0,82.0 L87.0,82.0 L86.0,81.0 L85.0,81.0 L84.0,80.0 L83.0,80.0 L82.0,79.0 L81.0,79.0 L80.0,78.0 L78.0,78.0 L76.0,80.0 L76.0,81.0 L75.0,82.0 L75.0,84.0 L73.0,86.0 L73.0,87.0 L72.0,88.0 L72.0,89.0 L70.0,91.0 L70.0,92.0 L69.0,93.0 L69.0,94.0 L68.0,95.0 L63.0,95.0 L61.0,93.0 L60.0,93.0 L59.0,92.0 L58.0,92.0 L56.0,90.0 L55.0,90.0 L54.0,89.0 L53.0,89.0 L52.0,88.0 L52.0,87.0 L51.0,86.0 L51.0,85.0 L52.0,84.0 L52.0,83.0 L53.0,82.0 L53.0,81.0 L55.0,79.0 L55.0,77.0 L58.0,74.0 L58.0,73.0 L59.0,72.0 L59.0,71.0 L60.0,70.0 L60.0,69.0 L61.0,68.0 L61.0,67.0 L63.0,65.0 L63.0,64.0 L64.0,63.0 L64.0,62.0 L66.0,60.0 L66.0,59.0 L68.0,57.0 L68.0,56.0 L71.0,53.0 L74.0,56.0 L76.0,56.0 L77.0,57.0 L78.0,57.0 L79.0,58.0 L80.0,57.0 L80.0,56.0 L81.0,55.0 L81.0,50.0 L82.0,49.0 L82.0,42.0 L83.0,41.0 L83.0,31.0 L82.0,30.0 L78.0,30.0 L74.0,34.0 L73.0,34.0 L70.0,37.0 L69.0,37.0 L69.0,38.0 L68.0,39.0 L67.0,39.0 L64.0,42.0 L63.0,42.0 L59.0,46.0 L61.0,48.0 L61.0,49.0 L62.0,49.0 L63.0,50.0 L64.0,50.0 L66.0,52.0 L64.0,54.0 L64.0,56.0 L61.0,59.0 L61.0,61.0 L59.0,63.0 L59.0,64.0 L58.0,65.0 L58.0,66.0 L56.0,68.0 L56.0,69.0 L55.0,70.0 L55.0,71.0 L53.0,73.0 L53.0,74.0 L52.0,75.0 L52.0,76.0 L50.0,78.0 L50.0,80.0 L46.0,84.0 L43.0,84.0 L41.0,82.0 L40.0,82.0 L39.0,81.0 L38.0,81.0 L37.0,80.0 L36.0,80.0 L35.0,79.0 L34.0,79.0 L33.0,78.0 L31.0,78.0 L30.0,77.0 L30.0,76.0 L29.0,76.0 L28.0,75.0 L26.0,75.0 L24.0,73.0 L23.0,73.0 L22.0,72.0 L21.0,72.0 L19.0,70.0 L17.0,70.0 L15.0,68.0 L14.0,68.0 L13.0,67.0 L12.0,67.0 L11.0,66.0 L10.0,66.0 L9.0,65.0 L8.0,65.0 L7.0,64.0 L6.0,64.0 Z M225.0,170.0 L227.0,172.0 L227.0,226.0 L226.0,227.0 L226.0,228.0 L225.0,229.0 L222.0,229.0 L221.0,230.0 L220.0,230.0 L219.0,229.0 L215.0,229.0 L214.0,230.0 L207.0,230.0 L206.0,229.0 L204.0,229.0 L203.0,230.0 L199.0,230.0 L198.0,229.0 L197.0,229.0 L196.0,228.0 L196.0,227.0 L195.0,226.0 L195.0,212.0 L196.0,211.0 L196.0,208.0 L197.0,207.0 L198.0,207.0 L198.0,206.0 L199.0,205.0 L199.0,204.0 L202.0,201.0 L202.0,200.0 L204.0,198.0 L204.0,197.0 L207.0,194.0 L207.0,193.0 L210.0,190.0 L210.0,189.0 L211.0,188.0 L212.0,188.0 L212.0,187.0 L213.0,186.0 L213.0,185.0 L215.0,183.0 L215.0,182.0 L220.0,177.0 L220.0,176.0 L221.0,175.0 L221.0,174.0 Z M225.0,142.0 L227.0,144.0 L227.0,159.0 L226.0,160.0 L226.0,162.0 L225.0,163.0 L224.0,163.0 L224.0,164.0 L222.0,166.0 L222.0,167.0 L220.0,169.0 L220.0,170.0 L218.0,172.0 L218.0,173.0 L217.0,174.0 L216.0,174.0 L216.0,175.0 L213.0,178.0 L213.0,179.0 L211.0,181.0 L211.0,182.0 L210.0,183.0 L210.0,184.0 L209.0,185.0 L208.0,185.0 L208.0,186.0 L205.0,189.0 L205.0,190.0 L204.0,191.0 L204.0,192.0 L199.0,197.0 L199.0,198.0 L197.0,200.0 L195.0,198.0 L195.0,144.0 L197.0,142.0 Z" fill="#111" fill-rule="evenodd" stroke="#111" stroke-width="0.5" stroke-linejoin="round"/></g>
+</defs>`;}
+function draw(){
+ const slot=132,groupGap=55,margin=85;
+ const ranges=[];let cursor=margin;
+ // Mantener también diferenciales sin circuitos, con su representación gráfica.
+ for(const g of S.groups){const cs=S.circuits.filter(c=>c.group===g.id),count=Math.max(cs.length,1),width=Math.max(slot*count,225);ranges.push({g,cs,start:cursor,width,mid:cursor+width/2});cursor+=width+groupGap;}
+ const right=ranges.at(-1).start+ranges.at(-1).width,spdX=right+35,width=right+(S.spd?235:85),igaX=Math.round((ranges[0].mid+ranges.at(-1).mid)/2);
+ const busY=167,difY=224,branchY=319,piaY=368,endY=556,labelsY=591,h=730;
+ let t=`<svg id="drawing" xmlns="http://www.w3.org/2000/svg" width="${width}" height="${h}" viewBox="0 0 ${width} ${h}" role="img" aria-label="Esquema unifilar CGMP"><rect width="${width}" height="${h}" fill="white"/>${symbolDefs()}`;
+ const sheetTitle=S.project.replace(/electrificación (básica|elevada)/i,isElevated()?'electrificación elevada':'electrificación básica');
+ t+=txt(width/2,32,sheetTitle,18,'middle','font-weight="bold"')+txt(width/2,53,`CGMP · 230 V~ · ${isElevated()?'Elevada':'Básica'} · ${S.area} m² útiles · Previsión ${S.power} W`,12);
+ // IGA: entrada, elemento de protección y unión exacta con la barra HORIZONTAL.
+ t+=line(igaX,76,igaX,87)+slash(igaX,83)+switchSym(igaX,122,'pia')+line(igaX,157,igaX,busY);
+ t+=txt(igaX-29,105,'IGA',14,'end')+txt(igaX-29,123,`2×${S.iga} A`,14,'end');
+ const busStart=Math.min(igaX,...ranges.map(r=>r.mid)),busEnd=S.spd?spdX:Math.max(igaX,...ranges.map(r=>r.mid));
+ t+=line(busStart,busY,busEnd,busY,1.5);
+ if(S.spd){t+=spdSym(spdX,busY);
+ t+=txt(spdX+88,282,'Protección',12)+txt(spdX+84,298,'contra',12)+txt(spdX+84,314,'sobretensiones',12)+txt(spdX+84,331,S.spdname==='both'?'permanentes + transitorias':'transitorias',11);}
+ for(let k=0;k<ranges.length;k++){
+  const r=ranges[k],x=r.mid;
+  t+=line(x,busY,x,difY-43)+switchSym(x,difY,'dif')+line(x,difY+45,x,branchY);
+  t+=txt(x-26,difY-30,`DIF ${k+1}`,12,'end')+txt(x-26,difY-14,`2×${r.g.a} A`,12,'end')+txt(x-26,difY+2,`${r.g.ma} mA`,12,'end');
+  // Zona receptora para mover circuitos entre diferenciales (se resalta al arrastrar).
+  t+=`<rect class="drop-target" fill="none" stroke="none" data-drop-group="${r.g.id}" x="${r.start}" y="${busY-9}" width="${r.width}" height="${branchY-busY+29}" rx="6"/>`;
+  const xs=r.cs.map((_,i)=>r.mid+(i-(r.cs.length-1)/2)*slot);
+  if(xs.length){t+=line(xs[0],branchY,xs[xs.length-1],branchY,1.4);
+   for(let i=0;i<r.cs.length;i++){
+    const c=r.cs[i],cx=xs[i];
+    t+=`<g class="drag-circuit" data-drag-c="${c.id}" aria-label="Arrastrar circuito ${esc(c.label)} a otro diferencial">`;
+    t+=line(cx,branchY,cx,piaY-35)+switchSym(cx,piaY,'pia');
+    // Conductores en la zona izquierda; leyenda en una columna paralela a la derecha.
+    t+=line(cx,piaY+34,cx,endY-8)+slash(cx,491);
+    t+=`<polygon points="${cx-4},${endY-11} ${cx+4},${endY-11} ${cx},${endY-2}" fill="#181818"/>`;
+    t+=txt(cx+40,piaY-9,`2×${c.a} A`,12,'start');
+    t+=`<text x="${cx+27}" y="${endY-23}" text-anchor="start" font-size="12" font-family="Arial,Helvetica,sans-serif" transform="rotate(-90 ${cx+27} ${endY-23})" fill="#181818">${esc('2×'+c.s+'+T · Tubo '+c.tube)}</text>`;
+    t+=txt(cx,labelsY,c.label,13);wrap(c.desc,18).forEach((v,j)=>{t+=txt(cx,labelsY+19+j*16,v,11.5);});
+    t+='</g>';
+   }
+  }
+ }
+ t+=txt(width/2,h-17,'Simulador didáctico INEL · Elaboración automática · Comprobar adecuación al REBT',10);
+ t+='</svg>';$('sheet').innerHTML=t;window._svg=t;window._size={width,height:h};window._ranges=ranges.map(r=>({id:r.g.id,start:r.start,end:r.start+r.width}));if(!$('materialsPanel').hidden)renderMaterials();
+}
+// --- Rev4: arrastrar circuitos sobre la barra de cualquier diferencial ---
+let drag=null;
+function svgCoords(svg,event){const pt=svg.createSVGPoint();pt.x=event.clientX;pt.y=event.clientY;const m=svg.getScreenCTM();return m?pt.matrixTransform(m.inverse()):null;}
+function dragTarget(svg,event){const pos=svgCoords(svg,event);if(!pos||pos.y<150||pos.y>350)return null;const rs=window._ranges||[];return rs.find(r=>pos.x>=r.start&&pos.x<=r.end)?.id??null;}
+function setDragTarget(svg,id){svg.querySelectorAll('.drop-target').forEach(el=>el.classList.toggle('selected',id!==null&&+el.dataset.dropGroup===id));}
+$('sheet').addEventListener('pointerdown',e=>{
+ const element=e.target.closest?.('[data-drag-c]');if(!element||e.button!==0)return;
+ const svg=$('drawing');if(!svg)return;
+ drag={id:+element.dataset.dragC,pointer:e.pointerId,origin:element,target:null,svg,startX:e.clientX,startY:e.clientY,moved:false};
+ svg.setPointerCapture(e.pointerId);e.preventDefault();
+});
+$('sheet').addEventListener('pointermove',e=>{
+ if(!drag||e.pointerId!==drag.pointer)return;
+ if(Math.hypot(e.clientX-drag.startX,e.clientY-drag.startY)>6)drag.moved=true;
+ if(!drag.moved)return;
+ const svg=drag.svg;svg.classList.add('dragging');drag.origin.classList.add('moving');
+ drag.target=dragTarget(svg,e);setDragTarget(svg,drag.target);
+ const g=S.groups.findIndex(g=>g.id===drag.target);
+ $('dragStatus').textContent=g>=0?`Soltar para asignar a DIF ${g+1}`:'Arrastra el circuito hacia la zona superior de un diferencial';
+});
+function stopDrag(e){
+ if(!drag||e.pointerId!==drag.pointer)return;
+ const d=drag;drag=null;
+ if(d.svg.hasPointerCapture?.(e.pointerId))d.svg.releasePointerCapture(e.pointerId);
+ d.svg.classList.remove('dragging');d.origin.classList.remove('moving');setDragTarget(d.svg,null);
+ if(e.type==='pointerup'&&d.moved&&d.target!==null){
+  const c=S.circuits.find(c=>c.id===d.id);
+  if(c&&c.group!==d.target){c.group=d.target;render();$('presets').value='custom';const i=S.groups.findIndex(g=>g.id===d.target);$('dragStatus').textContent=`${c.label} asignado al DIF ${i+1}.`;
+  }else $('dragStatus').textContent='Circuito sin cambios.';
+ }else $('dragStatus').textContent='Arrastra un circuito sobre la barra de otro diferencial para cambiar su asignación.';
+}
+$('sheet').addEventListener('pointerup',stopDrag);
+$('sheet').addEventListener('pointercancel',stopDrag);
+function render(){syncAreaCircuit();renderGroups();renderCircuits();draw();warnings();}
+function distribute(){const needed=Math.max(S.groups.length,Math.ceil(S.circuits.length/5),1);while(S.groups.length<needed)S.groups.push(newGroup());S.circuits.forEach((c,i)=>c.group=S.groups[Math.floor(i%needed)].id);render();}
+$('presets').addEventListener('change',e=>{if(e.target.value!=='custom')preset(e.target.value);});
+for(const [id,key,mode] of [['iga','iga','number'],['powers','power','number'],['project','project','text'],['spd','spd','checkbox'],['spdname','spdname','text']]){$(id).addEventListener('input',e=>{S[key]=mode==='checkbox'?e.target.checked:mode==='number'?+e.target.value:e.target.value;if(id==='iga'){for(const g of S.groups)g.a=Math.max(g.a,S.iga);renderGroups();}draw();warnings();$('presets').value='custom';});}
+$('area').addEventListener('change',e=>{S.area=Number(e.target.value)||0;syncAreaCircuit();syncControls();render();$('presets').value='custom';});
+$('groupList').addEventListener('change',e=>{
+ const target=e.target;
+ if(target.matches('[data-assign-c]')){
+  const c=S.circuits.find(x=>x.id===+target.dataset.assignC),g=S.groups.find(x=>x.id===+target.dataset.assignG);
+  if(!c||!g)return;
+  if(target.checked){c.group=g.id;}
+  // Todos los circuitos deben pertenecer a un diferencial: no permitir dejarlo sin asignar.
+  render();$('presets').value='custom';return;
+ }
+ const g=S.groups.find(x=>x.id==target.dataset.g);
+ if(g){g[target.dataset.key]=+target.value;draw();warnings();}
+});
+$('groupList').addEventListener('toggle',e=>{
+ const d=e.target;if(d.matches?.('[data-assign-details]')){
+  const g=S.groups.find(x=>x.id===+d.dataset.assignDetails);if(g)g.assignOpen=d.open;
+ }
+},true);
+$('groupList').addEventListener('click',e=>{const btn=e.target.closest('[data-delgroup]');if(!btn)return;const id=+btn.dataset.delgroup;S.groups=S.groups.filter(g=>g.id!==id);S.circuits.forEach(c=>{if(c.group===id)c.group=S.groups[0].id;});render();});
+$('addGroup').onclick=()=>{S.groups.push(newGroup());render();};$('addCircuit').onclick=()=>{S.circuits.push(mkCircuit('Otro',S.groups[S.groups.length-1].id));render();$('presets').value='custom';};$('autoGroups').onclick=()=>{distribute();$('presets').value='custom';};
+$('circuitList').addEventListener('click',e=>{const b=e.target.closest('[data-del]');if(!b)return;const id=+b.dataset.del;S.circuits=S.circuits.filter(c=>c.id!==id&&c.autoParent!==id);reconcileAutoCircuits();render();});
+$('circuitList').addEventListener('change',e=>{const c=S.circuits.find(x=>x.id==e.target.dataset.c);if(!c)return;const key=e.target.dataset.key;if(key==='code'){const p=catalog[e.target.value];c.code=e.target.value;Object.assign(c,{label:e.target.value,desc:p.name,a:p.a,s:p.s,tube:p.tube,points:0});reconcileAutoCircuits();render();}else{c[key]=['group','a','tube','points'].includes(key)?+e.target.value:e.target.value;if(key==='points'){reconcileAutoCircuits();syncAreaCircuit();render();}else if(key==='group'){render();}else{draw();warnings();}if(key==='label')e.target.closest('.circuit').querySelector('.circuit-head strong').textContent=c.label;} $('presets').value='custom';});
+$('circuitList').addEventListener('input',e=>{if(e.target.tagName!=='INPUT')return;const c=S.circuits.find(x=>x.id==e.target.dataset.c);if(!c)return;const key=e.target.dataset.key;if(key==='points')return;c[key]=['a','tube'].includes(key)?+e.target.value:e.target.value;draw();warnings();});
+function blobDownload(blob,name){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),800);}
+function slug(){return (S.project||'inel_cgmp').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9_-]+/gi,'_').slice(0,45)||'inel_cgmp';}
+function exportableSVG(){
+ const live=$('drawing');if(!live)return window._svg;
+ const copy=live.cloneNode(true);
+ // Las zonas interactivas no son parte del esquema; sin CSS se exportaban como rectángulos negros.
+ copy.querySelectorAll('.drop-target').forEach(el=>el.remove());
+ copy.classList.remove('dragging');copy.querySelectorAll('.moving').forEach(el=>el.classList.remove('moving'));
+ return new XMLSerializer().serializeToString(copy);
+}
+function svgBlob(){return new Blob([exportableSVG()],{type:'image/svg+xml;charset=utf-8'});}
+
+// rev5: relación de equipos basada exclusivamente en la configuración actual.
+function buildMaterials(){
+ const entries=new Map();
+ function add(kind,name,spec,missing,reference=''){
+  const key=[kind,name,spec,missing].join('|');
+  if(!entries.has(key))entries.set(key,{kind,name,spec,missing,qty:0,circuits:[]});
+  const row=entries.get(key);row.qty++;if(reference)row.circuits.push(reference);
+ }
+ add('Protección general','Interruptor general automático (IGA)',`2 polos · ${S.iga} A`,'Curva, poder de corte y referencia de fabricante');
+ S.groups.forEach((g,i)=>add('Protección diferencial','Interruptor diferencial',`2 polos · ${g.a} A · ${g.ma} mA`,'Tipo de diferencial y referencia de fabricante',`DIF ${i+1}`));
+ S.circuits.forEach(c=>add('Protección de circuitos','PIA · Interruptor magnetotérmico',`2 polos · ${c.a} A`,'Curva, poder de corte y referencia de fabricante',c.label));
+ if(S.spd)add('Sobretensiones','Protección contra sobretensiones',S.spdname==='both'?'Conjunto permanentes + transitorias':'Protección contra sobretensiones transitorias','Tipo/clase, parámetros de protección y referencia de fabricante');
+ return {items:Array.from(entries.values()),circuits:S.circuits.map(c=>({label:c.label,desc:c.desc,group:S.groups.findIndex(g=>g.id===c.group)+1,pia:c.a,section:c.s,tube:c.tube}))};
+}
+function materialsHTML(){
+ const {items,circuits}=buildMaterials();
+ const itemRows=items.map(x=>`<tr><td class="qty">${x.qty}</td><td>${esc(x.name)}</td><td>${esc(x.spec)}</td><td>${esc(x.circuits.join(', ')||'—')}</td><td class="missing">${esc(x.missing)}</td></tr>`).join('');
+ const circuitRows=circuits.map(c=>`<tr><td>${esc(c.label)}</td><td>${esc(c.desc)}</td><td>DIF ${c.group}</td><td>2×${esc(c.pia)} A</td><td>2×${esc(c.section)} mm² + T</td><td>Ø ${esc(c.tube)} mm</td></tr>`).join('');
+ return `<h4>Dispositivos de protección · ${items.reduce((s,x)=>s+x.qty,0)} unidades / conjuntos</h4>
+  <div class="table-scroll"><table><thead><tr><th>Cantidad</th><th>Componente</th><th>Características configuradas</th><th>Posición / circuitos</th><th>Datos por definir para el pedido</th></tr></thead><tbody>${itemRows}</tbody></table></div>
+  <h4>Canalizaciones y conductores por circuito</h4>
+  <div class="table-scroll"><table><thead><tr><th>Circuito</th><th>Destino</th><th>Diferencial</th><th>PIA</th><th>Conductores indicados</th><th>Tubo indicado</th></tr></thead><tbody>${circuitRows}</tbody></table></div>
+  <p class="material-warning">Antes de pedir material, especifica los datos pendientes de las protecciones. No se calculan metros de cable o tubo porque no se han introducido longitudes. El listado no incorpora envolvente ni accesorios de cuadro no configurados.</p>`;
+}
+function renderMaterials(){if(!$('materialsPanel').hidden)$('materialsContent').innerHTML=materialsHTML();}
+function showMaterials(open){$('materialsPanel').hidden=!open;$('materialsBtn').setAttribute('aria-expanded',String(open));if(open)renderMaterials();}
+$('materialsBtn').onclick=()=>showMaterials($('materialsPanel').hidden);
+$('materialsClose').onclick=()=>showMaterials(false);
+function csvQuoted(value){const t=String(value??'');return '"'+(/^[\s]*[=+@-]/.test(t)?"'":"")+t.replace(/"/g,'""')+'"';}
+function materialsCSV(){
+ const {items,circuits}=buildMaterials();
+ const rows=[['LISTADO DE MATERIALES CGMP',S.project],[],['Cantidad','Componente','Características','Circuitos / posición','Pendiente de especificar'],...items.map(x=>[x.qty,x.name,x.spec,x.circuits.join(', '),x.missing]),[],['CIRCUITOS'],['Circuito','Destino','Diferencial','PIA','Conductores','Tubo (mm)','Longitud (m)'],...circuits.map(c=>[c.label,c.desc,`DIF ${c.group}`,`2×${c.pia} A`,`2×${c.section} mm² + T`,c.tube,'Por medir'])];
+ return '\uFEFF'+rows.map(r=>r.map(csvQuoted).join(';')).join('\r\n');
+}
+$('materialsCsv').onclick=()=>blobDownload(new Blob([materialsCSV()],{type:'text/csv;charset=utf-8'}),slug()+'_materiales.csv');
+$('materialsPrint').onclick=()=>{
+ const win=window.open('','_blank');if(!win){alert('Permite ventanas emergentes para imprimir el listado.');return;}
+ const content=materialsHTML();
+ win.document.write(`<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Materiales ${esc(S.project)}</title><style>
+ body{font:12px Arial,Helvetica,sans-serif;color:#161616;margin:20px}h1{font-size:19px}h4{font-size:14px;margin:21px 0 8px}table{width:100%;border-collapse:collapse;font-size:11px}th,td{border:1px solid #bbb;padding:7px;text-align:left;vertical-align:top}th{background:#eee}.material-warning{margin-top:15px}.material-sub{font-size:11px}.material-title{display:none} @page{size:A4 landscape;margin:12mm}
+ </style></head><body><h1>${esc(S.project)} · Listado de materiales</h1><p>Generado con INEL rev6</p>${content}<script>window.onload=()=>setTimeout(()=>window.print(),250)<\/script></body></html>`);
+ win.document.close();
+};
+
+$('exportSvg').onclick=()=>blobDownload(svgBlob(),slug()+'.svg');
+async function canvasImage(){const svg=exportableSVG(),sz=window._size,url=URL.createObjectURL(new Blob([svg],{type:'image/svg+xml;charset=utf-8'}));try{const img=new Image();img.src=url;await img.decode();const canvas=document.createElement('canvas'),scale=2;canvas.width=sz.width*scale;canvas.height=sz.height*scale;const cx=canvas.getContext('2d');cx.fillStyle='#fff';cx.fillRect(0,0,canvas.width,canvas.height);cx.scale(scale,scale);cx.drawImage(img,0,0);return canvas;}finally{URL.revokeObjectURL(url);}}
+async function exportRaster(type){try{const c=await canvasImage();c.toBlob(b=>{if(b)blobDownload(b,slug()+'.'+(type==='image/jpeg'?'jpg':'png'));else alert('No se pudo generar la imagen.');},type,.94);}catch(err){alert('No se pudo generar la imagen: '+err.message);}}
+$('exportPng').onclick=()=>exportRaster('image/png');$('exportJpg').onclick=()=>exportRaster('image/jpeg');
+async function pdf(){try{if(window.jspdf?.jsPDF){const c=await canvasImage(),sz=window._size,landscape=sz.width>sz.height;const doc=new window.jspdf.jsPDF({orientation:landscape?'landscape':'portrait',unit:'mm',format:'a3'});const w=doc.internal.pageSize.getWidth(),h=doc.internal.pageSize.getHeight(),margin=10,ratio=Math.min((w-2*margin)/sz.width,(h-2*margin)/sz.height),dw=sz.width*ratio,dh=sz.height*ratio;doc.addImage(c.toDataURL('image/png'),'PNG',(w-dw)/2,(h-dh)/2,dw,dh,undefined,'FAST');doc.save(slug()+'.pdf');}else printPdf();}catch(err){console.error(err);printPdf();}}
+function printPdf(){const win=window.open('','_blank');if(!win){alert('Permite las ventanas emergentes para imprimir o guardar como PDF.');return;}win.document.write(`<!doctype html><html><head><title>${esc(S.project)}</title><style>@page{size: A3 landscape;margin:9mm}html,body{margin:0}svg{max-width:100%;max-height:95vh;width:auto;height:auto;display:block;margin:auto}
+.advanced{grid-column:span 2;border-top:1px solid #344251;padding-top:8px;margin-top:3px}.advanced summary{color:var(--orange2);font-weight:600;cursor:pointer}.advanced .row{margin-top:8px}.advanced label{font-size:12px}.autoChip{font-size:11px;color:#b8e8ce;background:#1b3931;border:1px solid #376153;border-radius:5px;padding:2px 6px}.detailHelp{font-size:11px;color:var(--muted);display:block;margin-top:6px}
+</style></head><body>${exportableSVG()}<script>window.onload=()=>setTimeout(()=>window.print(),350)<\/script></body></html>`);win.document.close();}
+$('exportPdf').onclick=pdf;
+$('saveJson').onclick=()=>blobDownload(new Blob([JSON.stringify({version:2,data:S},null,2)],{type:'application/json'}),slug()+'.json');$('loadJson').onclick=()=>$('jsonFile').click();$('jsonFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const obj=JSON.parse(await f.text()),s=obj.data;if(!s||!Array.isArray(s.groups)||!Array.isArray(s.circuits)||!s.groups.length)throw Error('Estructura JSON no válida');Object.assign(S,s);if(!Number.isFinite(Number(S.area)))S.area=0;uid=Math.max(1,...S.groups.map(g=>+g.id||0),...S.circuits.map(c=>+c.id||0))+1;syncControls();reconcileAutoCircuits();render();$('presets').value='custom';}catch(err){alert('No se pudo abrir: '+err.message);}e.target.value='';};
+preset('basic');
+</script><script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js" defer></script>
+</body></html>
