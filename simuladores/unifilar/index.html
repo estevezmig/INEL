@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>INEL · Generador de esquemas unifilares · rev6</title>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>INEL · Generador de esquemas unifilares · rev7</title>
 <style>
 :root{--bg:#0d141d;--panel:#151f2b;--panel2:#1c2936;--line:#2c3b4b;--text:#ecf2f6;--muted:#9dafbd;--orange:#f59e32;--orange2:#ffbd70;--red:#ff7878;--green:#86d8b2}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-ui,-apple-system,Segoe UI,Arial,sans-serif}.top{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-bottom:1px solid var(--line);background:#101a25;gap:10px;flex-wrap:wrap}.brand{display:flex;align-items:center;gap:13px}.logo{font-size:24px;color:#1b1310;background:var(--orange);font-weight:900;border-radius:10px;padding:8px 12px;letter-spacing:-1px}.brand strong{font-size:19px}.brand small{display:block;color:var(--muted);font-size:12px}.pill{background:#34281b;color:var(--orange2);border:1px solid #6d4924;border-radius:20px;padding:5px 11px;font-size:12px}.layout{display:grid;grid-template-columns:365px minmax(0,1fr);min-height:calc(100vh - 80px)}aside{padding:18px;border-right:1px solid var(--line);max-height:calc(100vh - 75px);overflow:auto}.main{padding:20px 22px;min-width:0}.section{background:var(--panel);border:1px solid var(--line);border-radius:13px;margin-bottom:15px;padding:16px}.section h3{font-size:14px;margin:0 0 14px;display:flex;align-items:center;justify-content:space-between}.section h3 span{color:var(--orange)}.row{display:flex;align-items:center;gap:9px;margin:9px 0}.row label{flex:1;color:#c9d3dc}.field{width:100%;background:#0e1823;color:var(--text);border:1px solid #3a4c5c;border-radius:7px;padding:9px 10px;font:inherit;min-width:0}.row .field{width:155px}.mini{width:80px!important}.check{accent-color:var(--orange);width:16px;height:16px}.btn{background:var(--panel2);color:var(--text);border:1px solid #4a5c6b;border-radius:8px;padding:9px 11px;font:inherit;cursor:pointer;white-space:nowrap}.btn:hover{border-color:var(--orange)}.btn.primary{background:var(--orange);color:#1b140e;border-color:var(--orange);font-weight:800}.btn.danger{color:#ffc0b9}.btn.sm{padding:6px 9px;font-size:12px}.toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin:0 0 13px}.toolbar h2{margin:0;font-size:20px}.actions{display:flex;flex-wrap:wrap;gap:7px}.sheetwrap{background:#dbe1e6;border-radius:12px;border:1px solid #3a4957;padding:16px;overflow:auto;min-height:490px}.paper{background:#fff;box-shadow:0 4px 18px #12203025;margin:0 auto;min-width:max-content}.paper svg{display:block;max-width:none}.footnote{font-size:12px;color:var(--muted);margin:12px 0}.footnote a{color:var(--orange2)}.circuits{display:flex;flex-direction:column;gap:8px}.circuit{background:#101a25;border:1px solid var(--line);border-radius:9px;padding:10px}.circuit-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px;gap:8px}.circuit-head strong{color:var(--orange2)}.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:7px}.cgrid .wide{grid-column:span 2}.cgrid label{font-size:11px;color:var(--muted)}.cgrid input,.cgrid select{margin-top:3px;padding:7px}.circuit button{border:0;background:none;color:var(--red);cursor:pointer}.tip{font-size:12px;color:var(--muted);margin:6px 0 0}.status{background:var(--panel);border:1px solid var(--line);padding:14px 17px;border-radius:11px}.status h3{margin:0 0 8px;font-size:14px}.message{padding:6px 0;color:#ffcba0;font-size:12px;border-top:1px solid #293645}.message.ok{color:var(--green)}.preset{display:grid;grid-template-columns:1fr 1fr;gap:7px}.preset .btn{font-size:12px;white-space:normal}.hint{font-size:12px;color:#b7c4cf}.span2{grid-column:span 2}.separator{height:1px;background:var(--line);margin:13px 0}.groupcard{border:1px solid #354555;border-radius:9px;padding:9px;margin:7px 0}.groupcard b{color:var(--orange2)}.groupcard .row{margin:6px 0}.note{border-left:3px solid var(--orange);background:#36291c;padding:9px 12px;color:#ffe0b9;border-radius:5px;font-size:12px;margin-bottom:12px}@media(max-width:1050px){.layout{grid-template-columns:1fr}aside{max-height:none;border-right:0;border-bottom:1px solid var(--line)}.main{padding:12px}.sheetwrap{padding:7px}}
 
@@ -17,6 +17,10 @@
 #drawing .drag-circuit.moving{opacity:.28}
 #dragStatus{font-size:12px;color:var(--orange2);min-height:18px;margin:7px 0 0}
 
+/* rev7: diferencial exclusivo C13 para vivienda unifamiliar */
+.ev-group{border-color:#ba7b24;background:#202416}
+.ev-group .circuit-head b{color:#ffcc82}
+.ev-group select{max-width:190px}
 /* rev5: listado para compras (sin inventar especificaciones no definidas) */
 .materials{background:#15212e;border:1px solid #e19335;border-radius:12px;padding:15px 17px;margin-bottom:14px}
 .materials[hidden]{display:none!important}.material-title{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
@@ -59,10 +63,10 @@
 </div>
 <div id="appShell" hidden>
 <nav class="back-nav"><a href="https://estevezmig.github.io/INEL/">← Volver a INEL</a></nav>
-<header class="top"><div class="brand"><div class="logo">INEL</div><div><strong>Generador de esquemas unifilares</strong><small>Instalaciones Eléctricas Interiores · CGMP de viviendas</small></div></div><div class="pill">Simulador didáctico · rev6 · 230 V</div></header>
+<header class="top"><div class="brand"><div class="logo">INEL</div><div><strong>Generador de esquemas unifilares</strong><small>Instalaciones Eléctricas Interiores · CGMP de viviendas</small></div></div><div class="pill">Simulador didáctico · rev7 · 230 V</div></header>
 <div class="layout"><aside>
 <div class="section"><h3>Configuración general <span>01</span></h3><div class="row"><label for="presets">Ejemplos</label><select id="presets" class="field"><option value="basic">Básica · C1 a C5</option><option value="split">Básica · C4 desdoblado</option><option value="high">Elevada · 8 circuitos</option><option value="custom">Personalizado</option></select></div><div class="row"><label for="project">Nombre del proyecto</label><input class="field" id="project" value="Vivienda · esquema unifilar"></div><div class="row"><label for="iga">IGA (2 polos)</label><select class="field" id="iga"><option>25</option><option>32</option><option>40</option><option>50</option><option>63</option></select></div><div class="row"><label for="spd">Protección sobretensiones</label><input id="spd" type="checkbox" class="check" checked></div><div class="row"><label for="spdname">Tipo de protección</label><select id="spdname" class="field"><option value="trans">Transitorias</option><option value="both">Permanentes + transitorias</option></select></div><div class="row"><label for="area">Superficie útil (m²)</label><input id="area" class="field" type="number" min="0" step="1" value="90"></div><div class="row"><label>Grado de electrificación</label><output id="degree" class="degree">Básica</output></div><p class="tip">Si la superficie útil supera 160 m²: electrificación elevada y circuito C7 obligatorio (ITC-BT-10 y 25).</p><div class="row"><label for="powers">Potencia prevista (W)</label><input id="powers" class="field" type="number" min="0" step="10" value="5750"></div></div>
-<div class="section"><h3>Diferenciales <span>02</span></h3><div id="groupList"></div><button class="btn sm" id="addGroup">+ Añadir diferencial</button><p class="tip">Asigna cada circuito al diferencial correspondiente. También puedes arrastrar un circuito desde el esquema y soltarlo sobre la barra de otro diferencial. Máximo: 5 circuitos por diferencial.</p></div>
+<div class="section"><h3>Diferenciales <span>02</span></h3><div id="groupList"></div><button class="btn sm" id="addGroup">+ Añadir diferencial</button><p class="tip">Asigna cada circuito al diferencial correspondiente. También puedes arrastrar un circuito desde el esquema y soltarlo sobre la barra de otro diferencial. Máximo: 5 circuitos por diferencial ordinario. C13 recibe automáticamente un diferencial exclusivo tipo B de 30 mA (opción tipo A + RDC-DD 6 mA).</p></div>
 <div class="section"><h3>Circuitos <span id="circuitCount">03</span></h3><div id="circuitList" class="circuits"></div><div class="separator"></div><div class="actions"><button class="btn primary" id="addCircuit">+ Añadir circuito</button><button class="btn" id="autoGroups">Distribuir en diferenciales</button></div></div>
 <div class="section"><h3>Guardar trabajo</h3><div class="actions"><button class="btn sm" id="saveJson">Guardar JSON</button><button class="btn sm" id="loadJson">Abrir JSON</button><input type="file" id="jsonFile" accept=".json,application/json" hidden></div></div>
 </aside><section class="main"><div class="toolbar"><h2>Esquema unifilar del CGMP</h2><div class="actions"><button class="btn primary sm" id="materialsBtn" aria-expanded="false" aria-controls="materialsPanel">Listado de materiales</button><button class="btn sm" id="exportSvg">SVG</button><button class="btn sm" id="exportPng">PNG</button><button class="btn sm" id="exportJpg">JPG</button><button class="btn primary sm" id="exportPdf">Exportar PDF</button></div></div>
@@ -73,7 +77,7 @@
   <div id="materialsContent"></div>
 </div>
 <div class="sheetwrap"><div class="paper" id="sheet"></div></div><div id="dragStatus" aria-live="polite">Arrastra un circuito sobre la barra de otro diferencial para cambiar su asignación.</div><p class="footnote">Vista generada en SVG vectorial: las líneas y los textos conservan su nitidez al ampliar. Arrastra desde el símbolo o la etiqueta de un circuito hasta el área superior de otro diferencial para reasignarlo. Los diagramas se organizan automáticamente por diferenciales. El PDF se exporta con jsPDF cuando está disponible y, en caso contrario, se abre el diálogo de impresión para «Guardar como PDF».</p>
-<div class="status"><h3>Comprobaciones didácticas del REBT</h3><div id="warnings"></div></div><p class="footnote">Referencias: <a href="https://www.boe.es/eli/es/rd/2002/08/02/842/con" target="_blank" rel="noopener">REBT (BOE), ITC-BT-17 e ITC-BT-25</a>. Las verificaciones implementadas son parciales: no sustituyen el dimensionamiento, las comprobaciones de instalación ni un proyecto.</p>
+<div class="status"><h3>Comprobaciones didácticas del REBT</h3><div id="warnings"></div></div><p class="footnote">Referencias: <a href="https://www.boe.es/eli/es/rd/2002/08/02/842/con" target="_blank" rel="noopener">REBT (BOE), ITC-BT-17, 25 y 52</a>. Las verificaciones implementadas son parciales: no sustituyen el dimensionamiento, las comprobaciones de instalación ni un proyecto. Para C13 se muestra un esquema didáctico de vivienda unifamiliar (ITC-BT-52, esquema 4a).</p>
 </section></div>
 </div><!-- /appShell -->
 <script>
@@ -92,7 +96,40 @@ const $=id=>document.getElementById(id);
 const catalog={C1:{name:'Alumbrado',a:10,s:'1,5',tube:16},C2:{name:'Tomas de uso general y frigorífico',a:16,s:'2,5',tube:20},C3:{name:'Cocina y horno',a:25,s:'6',tube:25},C4:{name:'Lavadora, lavavajillas y termo',a:20,s:'4',tube:20},C5:{name:'Baño y auxiliares de cocina',a:16,s:'2,5',tube:20},C6:{name:'Alumbrado adicional',a:10,s:'1,5',tube:16},C7:{name:'Tomas adicionales',a:16,s:'2,5',tube:20},C8:{name:'Calefacción eléctrica',a:25,s:'6',tube:25},C9:{name:'Aire acondicionado',a:25,s:'6',tube:25},C10:{name:'Secadora',a:16,s:'2,5',tube:20},C11:{name:'Automatización y seguridad',a:10,s:'1,5',tube:16},C12:{name:'Circuito adicional',a:16,s:'2,5',tube:20},C13:{name:'Recarga de vehículo eléctrico',a:16,s:'2,5',tube:20},Otro:{name:'Circuito personalizado',a:16,s:'2,5',tube:20}};
 let uid=1;const fresh=()=>uid++;
 function mkCircuit(code,group=0,extra={}){return {id:fresh(),code,label:extra.label??code,desc:extra.desc??catalog[code].name,a:extra.a??catalog[code].a,s:extra.s??catalog[code].s,tube:extra.tube??catalog[code].tube,group,points:extra.points??0,autoParent:extra.autoParent??null,autoIndex:extra.autoIndex??null,autoArea:extra.autoArea??false};}
-function newGroup(){return {id:fresh(),a:Math.max(40,S.iga),ma:30};}
+// Diferenciales con calibre nominal normalizado igual o superior al IGA.
+const standardRcdRating=(a)=>[25,40,63,80,100].find(n=>n>=Number(a))||100;
+function newGroup(kind='normal'){
+ const g={id:fresh(),a:standardRcdRating(Math.max(40,S.iga)),ma:30};
+ if(kind==='ev'){g.kind='ev';g.type='B';g.dcProtection='byB';}
+ return g;
+}
+// ITC-BT-25 2.3.2: un diferencial exclusivo para cada C13.
+// Los grupos especiales se crean/preservan al editar, cargar JSON y distribuir.
+function syncEvGroups(){
+ const ev=S.circuits.filter(c=>c.code==='C13');
+ const used=new Set();
+ for(const c of ev){
+  let g=S.groups.find(g=>g.id===c.group&&g.kind==='ev'&&!used.has(g.id));
+  if(!g){g=S.groups.find(g=>g.kind==='ev'&&!used.has(g.id));}
+  if(!g){g=newGroup('ev');S.groups.push(g);}
+  g.kind='ev';g.type=['A+RDC-DD','B'].includes(g.type)?g.type:'B';
+  g.ma=Number(g.ma)||30;g.a=Number(g.a)||standardRcdRating(S.iga);
+  g.dcProtection=g.type==='B'?'byB':'external';
+  c.group=g.id;c.curve=c.curve||'C';c.points=1;
+  used.add(g.id);
+ }
+ const obsolete=S.groups.filter(g=>g.kind==='ev'&&!used.has(g.id));
+ S.groups=S.groups.filter(g=>g.kind!=='ev'||used.has(g.id));
+ let regular=S.groups.filter(g=>g.kind!=='ev');
+ if(!regular.length){const g=newGroup();S.groups.unshift(g);regular=[g];}
+ // Los circuitos ordinarios nunca pueden colgar de un diferencial de recarga.
+ for(const c of S.circuits.filter(c=>c.code!=='C13')){
+  if(!regular.some(g=>g.id===c.group))c.group=regular[0].id;
+ }
+ // Agrupar los diferenciales exclusivos a la derecha y sin otros circuitos.
+ S.groups=[...regular,...S.groups.filter(g=>g.kind==='ev')];
+ return obsolete.length;
+}
 function preset(type){S.iga=type==='high'?40:type==='split'?32:25;S.spd=true;S.spdname='trans';S.power=type==='high'?9200:type==='split'?7360:5750;S.area=type==='high'?175:type==='split'?105:90;S.project='Vivienda · '+(type==='high'?'electrificación elevada': 'electrificación básica');S.groups=[newGroup()];S.circuits=[];
 if(type==='basic'){['C1','C2','C3','C4','C5'].forEach(k=>S.circuits.push(mkCircuit(k,S.groups[0].id)));}
 if(type==='split'){S.groups.push(newGroup());[['C1','C1-a','Alumbrado'],['C2','C2-a','Tomas de uso general'],['C3','C3','Cocina y horno'],['C4','C4-1','Lavadora'],['C4','C4-2','Lavavajillas'],['C4','C4-3','Termo eléctrico'],['C5','C5','Baño y auxiliares cocina']].forEach((x,i)=>S.circuits.push(mkCircuit(x[0],S.groups[i<3?0:1].id,{label:x[1],desc:x[2],...(x[0]==='C4'?{a:16,s:'2,5',tube:20}:{})})));}
@@ -103,18 +140,22 @@ function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&l
 function renderGroups(){
  const el=$('groupList');
  el.innerHTML=S.groups.map((g,i)=>{
-  const assigned=S.circuits.filter(c=>c.group===g.id).length;
-  return `<div class="groupcard"><div class="circuit-head"><b>DIF ${i+1} <span class="group-count">(${assigned} circuitos)</span></b>${S.groups.length>1?`<button class="btn danger sm" data-delgroup="${g.id}">Eliminar</button>`:''}</div>
+  const assigned=S.circuits.filter(c=>c.group===g.id).length,isEv=g.kind==='ev';
+  return `<div class="groupcard ${isEv?'ev-group':''}"><div class="circuit-head"><b>DIF ${i+1} ${isEv?'· C13 exclusivo':''}<span class="group-count"> (${assigned} circuito${assigned===1?'':'s'})</span></b>${S.groups.length>1&&!isEv?`<button class="btn danger sm" data-delgroup="${g.id}">Eliminar</button>`:isEv?'<span class="autoChip">Protección automática</span>':''}</div>
   <div class="row"><label>Intensidad nominal (A)</label><select class="field mini" data-g="${g.id}" data-key="a">${[25,40,63,80,100].map(a=>`<option ${a==g.a?'selected':''}>${a}</option>`).join('')}</select></div>
   <div class="row"><label>Sensibilidad (mA)</label><select class="field mini" data-g="${g.id}" data-key="ma">${[10,30,100,300].map(a=>`<option ${a==g.ma?'selected':''}>${a}</option>`).join('')}</select></div>
+  ${isEv?`<div class="row"><label>Protección de recarga</label><select class="field" data-g="${g.id}" data-key="type"><option value="B" ${g.type==='B'?'selected':''}>Tipo B · 30 mA</option><option value="A+RDC-DD" ${g.type==='A+RDC-DD'?'selected':''}>Tipo A + RDC-DD 6 mA</option></select></div><p class="tip">Ramal exclusivo C13. Tipo B por defecto; alternativa tipo A con detección/desconexión de defectos CC &gt; 6 mA mediante RDC-DD compatible. Verificar fabricante del SAVE.</p>`:''}
   <details class="assignments" ${g.assignOpen?'open':''} data-assign-details="${g.id}"><summary>Asignar circuitos a este diferencial</summary>
-  <div class="assign-list">${S.circuits.length?S.circuits.map(c=>`<label class="assign-row"><input type="checkbox" class="check" data-assign-c="${c.id}" data-assign-g="${g.id}" ${c.group===g.id?'checked':''}><span><b>${esc(c.label)}</b><small>${esc(c.desc)}</small></span></label>`).join(''):'<small>Añade primero un circuito.</small>'}</div>
-  <small class="assign-hint">Marca un circuito para moverlo aquí. Se desmarcará automáticamente del diferencial anterior.</small>
+  <div class="assign-list">${S.circuits.length?S.circuits.map(c=>{
+    const incompatible=isEv?c.code!=='C13'||c.group!==g.id:c.code==='C13';
+    return `<label class="assign-row"><input type="checkbox" class="check" data-assign-c="${c.id}" data-assign-g="${g.id}" ${c.group===g.id?'checked':''} ${incompatible||isEv?'disabled':''}><span><b>${esc(c.label)}</b><small>${esc(c.desc)}${c.code==='C13'?' · diferencial exclusivo':''}</small></span></label>`;
+   }).join(''):'<small>Añade primero un circuito.</small>'}</div>
+  <small class="assign-hint">${isEv?'C13 queda reservado a este diferencial. No admite otros circuitos.':'Marca un circuito para moverlo aquí. C13 siempre va a un diferencial exclusivo.'}</small>
   </details></div>`;
  }).join('');
 }
 
-function renderCircuits(){const el=$('circuitList');$('circuitCount').textContent=String(S.circuits.length).padStart(2,'0');el.innerHTML=S.circuits.map((c,i)=>{const root=['C1','C2','C5'].includes(c.code)&&!c.autoParent, limits={C1:30,C2:20,C5:6},units={C1:'puntos de luz',C2:'tomas de uso general',C5:'tomas de baño y cocina'};return `<div class="circuit"><div class="circuit-head"><strong>${esc(c.label)} <small>· circuito ${i+1}</small></strong>${(c.autoParent||c.autoArea)?'<span class="autoChip">Generado automáticamente</span>':`<button title="Eliminar circuito" data-del="${c.id}">Eliminar ×</button>`}</div><div class="cgrid"><label>Tipo<select class="field" data-c="${c.id}" data-key="code" ${(c.autoParent||c.autoArea)?'disabled':''}>${Object.keys(catalog).map(k=>`<option value="${k}" ${c.code===k?'selected':''}>${k} · ${esc(catalog[k].name)}</option>`).join('')}</select></label><label>Identificación<input class="field" data-c="${c.id}" data-key="label" value="${esc(c.label)}"></label><label class="wide">Uso / descripción<input class="field" data-c="${c.id}" data-key="desc" value="${esc(c.desc)}"></label><label>PIA (A)<input class="field" type="number" min="1" data-c="${c.id}" data-key="a" value="${esc(c.a)}"></label><label>Diferencial<select class="field" data-c="${c.id}" data-key="group">${S.groups.map((g,j)=>`<option value="${g.id}" ${g.id===c.group?'selected':''}>DIF ${j+1}</option>`).join('')}</select></label><label>Sección (mm²)<input class="field" data-c="${c.id}" data-key="s" value="${esc(c.s)}"></label><label>Tubo (mm)<input class="field" type="number" min="1" data-c="${c.id}" data-key="tube" value="${esc(c.tube)}"></label>${root?`<details class="advanced" ${c.points>0?'open':''}><summary>Avanzado · puntos de utilización</summary><div class="row"><label>${units[c.code]} (total)</label><input type="number" class="field mini" min="0" max="1000" step="1" value="${c.points||0}" data-c="${c.id}" data-key="points"></div><span class="detailHelp">Máximo ${limits[c.code]} por circuito. Si se supera, se crean ${c.code==='C1'?'C6':c.code==='C2'?'C7':'C12'} adicionales de forma automática. Un valor de 0 significa «no indicado».</span></details>`:(c.autoParent||c.autoArea)?`<div class="advanced"><span class="detailHelp">Puntos asignados a este circuito: ${c.points}. Edita el total en el circuito principal.</span></div>`:''}</div></div>`;}).join('');}
+function renderCircuits(){const el=$('circuitList');$('circuitCount').textContent=String(S.circuits.length).padStart(2,'0');el.innerHTML=S.circuits.map((c,i)=>{const root=['C1','C2','C5'].includes(c.code)&&!c.autoParent, limits={C1:30,C2:20,C5:6},units={C1:'puntos de luz',C2:'tomas de uso general',C5:'tomas de baño y cocina'};return `<div class="circuit"><div class="circuit-head"><strong>${esc(c.label)} <small>· circuito ${i+1}</small></strong>${(c.autoParent||c.autoArea)?'<span class="autoChip">Generado automáticamente</span>':`<button title="Eliminar circuito" data-del="${c.id}">Eliminar ×</button>`}</div><div class="cgrid"><label>Tipo<select class="field" data-c="${c.id}" data-key="code" ${(c.autoParent||c.autoArea)?'disabled':''}>${Object.keys(catalog).map(k=>`<option value="${k}" ${c.code===k?'selected':''}>${k} · ${esc(catalog[k].name)}</option>`).join('')}</select></label><label>Identificación<input class="field" data-c="${c.id}" data-key="label" value="${esc(c.label)}"></label><label class="wide">Uso / descripción<input class="field" data-c="${c.id}" data-key="desc" value="${esc(c.desc)}"></label><label>PIA (A)<input class="field" type="number" min="1" data-c="${c.id}" data-key="a" value="${esc(c.a)}"></label><label>Diferencial<select class="field" data-c="${c.id}" data-key="group">${S.groups.filter(g=>c.code==='C13'?g.id===c.group:g.kind!=='ev').map(g=>`<option value="${g.id}" ${g.id===c.group?'selected':''}>DIF ${S.groups.indexOf(g)+1}${g.kind==='ev'?' · C13 exclusivo':''}</option>`).join('')}</select></label><label>Sección (mm²)<input class="field" data-c="${c.id}" data-key="s" value="${esc(c.s)}"></label><label>Tubo (mm)<input class="field" type="number" min="1" data-c="${c.id}" data-key="tube" value="${esc(c.tube)}"></label>${root?`<details class="advanced" ${c.points>0?'open':''}><summary>Avanzado · puntos de utilización</summary><div class="row"><label>${units[c.code]} (total)</label><input type="number" class="field mini" min="0" max="1000" step="1" value="${c.points||0}" data-c="${c.id}" data-key="points"></div><span class="detailHelp">Máximo ${limits[c.code]} por circuito. Si se supera, se crean ${c.code==='C1'?'C6':c.code==='C2'?'C7':'C12'} adicionales de forma automática. Un valor de 0 significa «no indicado».</span></details>`:(c.autoParent||c.autoArea)?`<div class="advanced"><span class="detailHelp">Puntos asignados a este circuito: ${c.points}. Edita el total en el circuito principal.</span></div>`:''}${c.code==='C13'?`<div class="advanced"><div class="row"><label>PIA · curva (ITC-BT-52, 6.3)</label><select class="field mini" data-c="${c.id}" data-key="curve">${['C','B','D'].map(cur=>`<option ${c.curve===cur?'selected':''}>${cur}</option>`).join('')}</select></div><small class="detailHelp">Recarga: se representa un punto de conexión. Para más puntos se deben verificar las protecciones individuales. Sección y calibre requieren cálculo según método de instalación.</small></div>`:''}</div></div>`;}).join('');}
 function reconcileAutoCircuits(){const spec={C1:['C6',30,'Alumbrado adicional'],C2:['C7',20,'Tomas adicionales'],C5:['C12',6,'Baño y auxiliares de cocina (adicional)']};const roots=S.circuits.filter(c=>!c.autoParent&&spec[c.code]);const neededIds=new Set();for(const root of roots){const [code,limit,desc]=spec[root.code];const points=Math.max(0,Math.min(1000,Math.floor(Number(root.points)||0)));root.points=points;const extraCount=points>limit?Math.ceil(points/limit)-1:0;for(let i=1;i<=extraCount;i++){const key=`${root.id}:${i}`;neededIds.add(key);let c=S.circuits.find(c=>c.autoParent===root.id&&c.autoIndex===i);if(!c){const taken=S.circuits.filter(c=>c.autoParent===root.id).length;const group=S.groups.find(g=>S.circuits.filter(x=>x.group===g.id).length<5)||S.groups[S.groups.push(newGroup())-1];c=mkCircuit(code,group.id,{label:i===1?code:`${code}-${i}`,desc,autoParent:root.id,autoIndex:i});S.circuits.push(c);}c.points=Math.min(limit,points-i*limit);}}S.circuits=S.circuits.filter(c=>!c.autoParent||neededIds.has(`${c.autoParent}:${c.autoIndex}`));}
 // ITC-BT-25: en superficie util superior a 160 m² debe existir un C7.
 // No se destruyen circuitos manuales y se evita duplicar un C7 ya presente.
@@ -133,7 +174,48 @@ function syncAreaCircuit(){
 }
 function isElevated(){return S.area>160||S.circuits.some(c=>['C6','C7','C8','C9','C10','C11','C12','C13'].includes(c.code));}
 function addWarning(s,ok=false){return `<div class="message ${ok?'ok':''}">${ok?'✓':'⚠'} ${esc(s)}</div>`;}
-function warnings(){let v=[];if(S.area>160&&!S.circuits.some(c=>c.code==='C7'))v.push('Superficie útil superior a 160 m²: es obligatorio disponer de un circuito C7 (ITC-BT-25, 2.3.2).');if(S.iga<25)v.push('El IGA debe ser como mínimo de 25 A (ITC-BT-25, 2.1).');const capacity=S.iga*230;if(S.power>capacity)v.push(`Potencia prevista ${S.power} W superior a la capacidad nominal del IGA ${S.iga} A a 230 V (${capacity} W). Aumenta el IGA o revisa la previsión de carga.`);if(isElevated()&&S.power<9200)v.push('Electrificación elevada: la previsión debe ser como mínimo 9200 W (ITC-BT-10).');if(S.power<5750)v.push('La potencia prevista es inferior a 5750 W (mínimo reglamentario en viviendas de nueva construcción, ITC-BT-10).');if(S.circuits.some(c=>['C6','C7','C8','C9','C10','C11','C12','C13'].includes(c.code))&&S.power<9200)v.push('Hay circuitos de electrificación elevada: su previsión de potencia mínima es 9200 W (ITC-BT-10).');for(const [i,g] of S.groups.entries()){const n=S.circuits.filter(c=>c.group===g.id).length;if(n>5)v.push(`DIF ${i+1}: ${n} circuitos; no superar 5 por diferencial (ITC-BT-25).`);if(g.a<S.iga)v.push(`DIF ${i+1}: In ${g.a} A inferior al IGA ${S.iga} A (ITC-BT-25, 2.1).`);if(g.ma>30)v.push(`DIF ${i+1}: ${g.ma} mA; debe garantizarse protección diferencial ≤ 30 mA (ITC-BT-25, 2.1).`);if(!n)v.push(`DIF ${i+1}: no tiene circuitos asignados.`);}if(S.groups.length<Math.ceil(S.circuits.length/5))v.push('No hay suficientes diferenciales para el mínimo de uno por cada cinco circuitos (ITC-BT-25).');if(S.circuits.some(c=>c.code==='C13'))v.push('C13: revisar requisitos específicos ITC-BT-52; no se validan en esta versión.');if(!S.circuits.length)v.push('Añade al menos un circuito.');$('degree').textContent=isElevated()?'Elevada':'Básica';$('warnings').innerHTML=v.length?v.map(x=>addWarning(x)).join(''):addWarning('Sin incidencias en las comprobaciones implementadas (verificación parcial).',true);}
+function warnings(){let v=[];
+ if(S.area>160&&!S.circuits.some(c=>c.code==='C7'))v.push('Superficie útil superior a 160 m²: es obligatorio disponer de un circuito C7 (ITC-BT-25, 2.3.2).');
+ if(S.iga<25)v.push('El IGA debe ser como mínimo de 25 A (ITC-BT-25, 2.1).');
+ const capacity=S.iga*230;
+ if(S.power>capacity)v.push(`Potencia prevista ${S.power} W superior a la capacidad nominal del IGA ${S.iga} A a 230 V (${capacity} W). Aumenta el IGA o revisa la previsión de carga.`);
+ if(isElevated()&&S.power<9200)v.push('Electrificación elevada: previsión mínima 9200 W (ITC-BT-10).');
+ if(S.power<5750)v.push('La potencia prevista es inferior a 5750 W (mínimo reglamentario en viviendas de nueva construcción, ITC-BT-10).');
+ for(const [i,g] of S.groups.entries()){
+  const cs=S.circuits.filter(c=>c.group===g.id),n=cs.length;
+  if(n>5)v.push(`DIF ${i+1}: ${n} circuitos; no superar 5 por diferencial (ITC-BT-25).`);
+  if(g.a<S.iga)v.push(`DIF ${i+1}: In ${g.a} A inferior al IGA ${S.iga} A (comprobar coordinación).`);
+  if(g.ma>30)v.push(`DIF ${i+1}: ${g.ma} mA; debe garantizarse protección diferencial ≤ 30 mA (ITC-BT-25; ITC-BT-52 para C13).`);
+  if(!n)v.push(`DIF ${i+1}: no tiene circuitos asignados.`);
+  if(g.kind==='ev'){
+   if(n!==1||cs.some(c=>c.code!=='C13'))v.push(`DIF ${i+1}: debe proteger exclusivamente un circuito C13 (ITC-BT-25, 2.3.2).`);
+   if(!['B','A+RDC-DD'].includes(g.type))v.push(`DIF ${i+1} (C13): tipo de protección diferencial no seleccionado.`);
+   if(g.type==='A+RDC-DD'&&g.dcProtection!=='external')v.push(`DIF ${i+1} (C13): falta confirmar RDC-DD de 6 mA CC compatible con el SAVE.`);
+  }
+ }
+ const ordinary=S.circuits.filter(c=>c.code!=='C13'),regular=S.groups.filter(g=>g.kind!=='ev');
+ if(regular.length<Math.ceil(ordinary.length/5))v.push('Diferenciales ordinarios insuficientes para un mínimo de uno por cada cinco circuitos (ITC-BT-25).');
+ const c13=S.circuits.filter(c=>c.code==='C13');
+ if(c13.length){
+  if(!S.spd||S.spdname!=='both')v.push('C13: la ITC-BT-52, 6.4 exige protección contra sobretensiones temporales Y transitorias. Selecciona «Permanentes + transitorias».');
+  for(const c of c13){
+   const idx=S.groups.findIndex(g=>g.id===c.group),g=S.groups[idx];
+   if(!g||g.kind!=='ev'||S.circuits.filter(x=>x.group===c.group).length!==1)v.push(`${c.label}: falta diferencial exclusivo (ITC-BT-25, 2.3.2).`);
+   if((g?.ma??999)>30)v.push(`${c.label}: el diferencial debe ser como máximo de 30 mA (ITC-BT-52, 6.1).`);
+   if(c.curve!=='C')v.push(`${c.label}: el magnetotérmico del circuito de recarga debe ser de curva C (ITC-BT-52, 6.3).`);
+   const sec=Number(String(c.s).replace(',','.'));
+   if(!Number.isFinite(sec)||sec<2.5)v.push(`${c.label}: sección ${c.s} mm² inferior al mínimo de referencia 2,5 mm² para C13 (ITC-BT-25, tabla 1).`);
+   if(Number(c.tube)<20)v.push(`${c.label}: tubo ${c.tube} mm inferior al mínimo de referencia Ø20 mm (ITC-BT-25, tabla 1).`);
+   if(![10,16,20,32,40].includes(Number(c.a)))v.push(`${c.label}: PIA ${c.a} A fuera de los escalones monofásicos habituales de la tabla 1 de ITC-BT-52 (10, 16, 20, 32 y 40 A); justificar el dimensionamiento.`);
+   if(c.a>16&&sec<=2.5)v.push(`${c.label}: PIA ${c.a} A con sección ${c.s} mm². Verificar explícitamente Iz ≥ In y condiciones de instalación (ITC-BT-19 y 22); la sección NO queda validada por esta herramienta.`);
+   if(g&&Number(g.a)<Number(c.a))v.push(`${c.label}: diferencial In ${g.a} A inferior al PIA ${c.a} A; revisar coordinación.`);
+  }
+ }
+ if(!S.circuits.length)v.push('Añade al menos un circuito.');
+ $('degree').textContent=isElevated()?'Elevada':'Básica';
+ $('warnings').innerHTML=v.length?v.map(x=>addWarning(x)).join(''):addWarning('Sin incidencias en las comprobaciones implementadas (verificación parcial).',true);
+}
+
 function E(t,attrs={},contents=''){return `<${t} ${Object.entries(attrs).map(([k,v])=>`${k}="${esc(v)}"`).join(' ')}>${contents}</${t}>`;}
 const line=(x1,y1,x2,y2,w=1.45)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#171717" stroke-width="${w}"/>`;
 const txt=(x,y,s,size=13,anchor='middle',extra='')=>`<text x="${x}" y="${y}" font-size="${size}" text-anchor="${anchor}" font-family="Arial, Helvetica, sans-serif" fill="#181818" ${extra}>${esc(s)}</text>`;
@@ -158,10 +240,10 @@ function symbolDefs(){return `<defs>
 <g id="icon-sobretensiones"><path d="M206.0,270.0 L206.0,271.0 L207.0,272.0 L217.0,272.0 L218.0,271.0 L217.0,270.0 L217.0,269.0 L207.0,269.0 Z M199.0,258.0 L199.0,260.0 L200.0,261.0 L222.0,261.0 L223.0,260.0 L223.0,258.0 L221.0,258.0 L220.0,257.0 L200.0,257.0 Z M5.0,65.0 L5.0,67.0 L6.0,67.0 L7.0,68.0 L7.0,69.0 L8.0,69.0 L9.0,70.0 L10.0,70.0 L12.0,72.0 L13.0,72.0 L14.0,73.0 L16.0,73.0 L17.0,74.0 L18.0,74.0 L19.0,75.0 L20.0,75.0 L21.0,76.0 L22.0,76.0 L24.0,78.0 L25.0,78.0 L26.0,79.0 L27.0,79.0 L29.0,81.0 L31.0,81.0 L33.0,83.0 L34.0,83.0 L35.0,84.0 L37.0,84.0 L40.0,87.0 L42.0,87.0 L44.0,89.0 L46.0,89.0 L47.0,90.0 L48.0,90.0 L50.0,92.0 L51.0,92.0 L52.0,93.0 L53.0,93.0 L55.0,95.0 L57.0,95.0 L59.0,97.0 L60.0,97.0 L61.0,98.0 L63.0,98.0 L66.0,101.0 L68.0,101.0 L70.0,103.0 L71.0,103.0 L72.0,104.0 L74.0,104.0 L76.0,106.0 L78.0,106.0 L81.0,109.0 L83.0,109.0 L85.0,111.0 L86.0,111.0 L87.0,112.0 L89.0,112.0 L91.0,114.0 L92.0,114.0 L93.0,115.0 L209.0,115.0 L210.0,116.0 L210.0,136.0 L208.0,138.0 L192.0,138.0 L191.0,139.0 L191.0,141.0 L190.0,142.0 L190.0,149.0 L191.0,150.0 L191.0,200.0 L190.0,201.0 L190.0,210.0 L189.0,211.0 L189.0,212.0 L187.0,214.0 L187.0,215.0 L186.0,216.0 L185.0,216.0 L185.0,217.0 L182.0,220.0 L182.0,221.0 L181.0,222.0 L181.0,223.0 L180.0,224.0 L179.0,224.0 L179.0,225.0 L177.0,227.0 L164.0,227.0 L163.0,228.0 L163.0,230.0 L165.0,230.0 L166.0,231.0 L176.0,231.0 L177.0,230.0 L180.0,230.0 L182.0,228.0 L182.0,227.0 L184.0,225.0 L184.0,224.0 L187.0,221.0 L187.0,220.0 L188.0,219.0 L189.0,219.0 L190.0,220.0 L190.0,230.0 L191.0,231.0 L191.0,232.0 L192.0,232.0 L193.0,233.0 L208.0,233.0 L209.0,234.0 L209.0,235.0 L210.0,236.0 L210.0,242.0 L209.0,243.0 L209.0,244.0 L208.0,245.0 L198.0,245.0 L197.0,246.0 L196.0,246.0 L195.0,245.0 L192.0,245.0 L191.0,246.0 L189.0,246.0 L189.0,247.0 L188.0,248.0 L189.0,249.0 L233.0,249.0 L234.0,248.0 L234.0,247.0 L233.0,246.0 L227.0,246.0 L226.0,245.0 L224.0,245.0 L223.0,246.0 L222.0,245.0 L215.0,245.0 L213.0,243.0 L213.0,235.0 L215.0,233.0 L228.0,233.0 L229.0,232.0 L230.0,232.0 L231.0,231.0 L231.0,164.0 L232.0,163.0 L232.0,160.0 L233.0,159.0 L233.0,158.0 L235.0,156.0 L235.0,155.0 L238.0,152.0 L238.0,151.0 L242.0,147.0 L242.0,146.0 L246.0,142.0 L258.0,142.0 L259.0,141.0 L259.0,138.0 L244.0,138.0 L238.0,144.0 L238.0,145.0 L236.0,147.0 L236.0,148.0 L235.0,149.0 L235.0,150.0 L234.0,151.0 L233.0,151.0 L231.0,149.0 L231.0,140.0 L230.0,139.0 L230.0,138.0 L217.0,138.0 L216.0,137.0 L214.0,137.0 L213.0,136.0 L213.0,113.0 L211.0,111.0 L96.0,111.0 L95.0,110.0 L92.0,110.0 L91.0,109.0 L89.0,109.0 L87.0,107.0 L86.0,107.0 L85.0,106.0 L84.0,106.0 L82.0,104.0 L81.0,104.0 L80.0,103.0 L79.0,103.0 L78.0,102.0 L77.0,102.0 L76.0,101.0 L74.0,101.0 L72.0,99.0 L72.0,96.0 L74.0,94.0 L74.0,93.0 L75.0,92.0 L75.0,90.0 L77.0,88.0 L77.0,87.0 L78.0,86.0 L78.0,85.0 L79.0,84.0 L84.0,84.0 L87.0,87.0 L89.0,87.0 L91.0,89.0 L92.0,89.0 L93.0,90.0 L95.0,90.0 L96.0,89.0 L97.0,89.0 L97.0,88.0 L98.0,87.0 L98.0,85.0 L99.0,84.0 L99.0,83.0 L100.0,82.0 L100.0,80.0 L103.0,77.0 L103.0,75.0 L105.0,73.0 L105.0,72.0 L106.0,71.0 L106.0,66.0 L105.0,65.0 L103.0,65.0 L102.0,64.0 L100.0,64.0 L98.0,62.0 L96.0,62.0 L93.0,59.0 L93.0,57.0 L94.0,56.0 L94.0,55.0 L95.0,54.0 L95.0,53.0 L97.0,51.0 L97.0,50.0 L98.0,49.0 L98.0,48.0 L99.0,47.0 L99.0,46.0 L100.0,45.0 L100.0,42.0 L101.0,41.0 L101.0,40.0 L98.0,40.0 L98.0,41.0 L97.0,42.0 L97.0,43.0 L95.0,45.0 L95.0,46.0 L94.0,47.0 L94.0,48.0 L92.0,50.0 L92.0,52.0 L91.0,53.0 L91.0,54.0 L89.0,56.0 L89.0,58.0 L88.0,59.0 L88.0,60.0 L89.0,61.0 L89.0,62.0 L91.0,64.0 L93.0,64.0 L94.0,65.0 L95.0,65.0 L96.0,66.0 L97.0,66.0 L98.0,67.0 L99.0,67.0 L101.0,69.0 L101.0,71.0 L100.0,72.0 L100.0,74.0 L98.0,76.0 L98.0,77.0 L97.0,78.0 L97.0,80.0 L95.0,82.0 L95.0,83.0 L94.0,84.0 L90.0,84.0 L88.0,82.0 L87.0,82.0 L86.0,81.0 L85.0,81.0 L84.0,80.0 L83.0,80.0 L82.0,79.0 L81.0,79.0 L80.0,78.0 L78.0,78.0 L76.0,80.0 L76.0,81.0 L75.0,82.0 L75.0,84.0 L73.0,86.0 L73.0,87.0 L72.0,88.0 L72.0,89.0 L70.0,91.0 L70.0,92.0 L69.0,93.0 L69.0,94.0 L68.0,95.0 L63.0,95.0 L61.0,93.0 L60.0,93.0 L59.0,92.0 L58.0,92.0 L56.0,90.0 L55.0,90.0 L54.0,89.0 L53.0,89.0 L52.0,88.0 L52.0,87.0 L51.0,86.0 L51.0,85.0 L52.0,84.0 L52.0,83.0 L53.0,82.0 L53.0,81.0 L55.0,79.0 L55.0,77.0 L58.0,74.0 L58.0,73.0 L59.0,72.0 L59.0,71.0 L60.0,70.0 L60.0,69.0 L61.0,68.0 L61.0,67.0 L63.0,65.0 L63.0,64.0 L64.0,63.0 L64.0,62.0 L66.0,60.0 L66.0,59.0 L68.0,57.0 L68.0,56.0 L71.0,53.0 L74.0,56.0 L76.0,56.0 L77.0,57.0 L78.0,57.0 L79.0,58.0 L80.0,57.0 L80.0,56.0 L81.0,55.0 L81.0,50.0 L82.0,49.0 L82.0,42.0 L83.0,41.0 L83.0,31.0 L82.0,30.0 L78.0,30.0 L74.0,34.0 L73.0,34.0 L70.0,37.0 L69.0,37.0 L69.0,38.0 L68.0,39.0 L67.0,39.0 L64.0,42.0 L63.0,42.0 L59.0,46.0 L61.0,48.0 L61.0,49.0 L62.0,49.0 L63.0,50.0 L64.0,50.0 L66.0,52.0 L64.0,54.0 L64.0,56.0 L61.0,59.0 L61.0,61.0 L59.0,63.0 L59.0,64.0 L58.0,65.0 L58.0,66.0 L56.0,68.0 L56.0,69.0 L55.0,70.0 L55.0,71.0 L53.0,73.0 L53.0,74.0 L52.0,75.0 L52.0,76.0 L50.0,78.0 L50.0,80.0 L46.0,84.0 L43.0,84.0 L41.0,82.0 L40.0,82.0 L39.0,81.0 L38.0,81.0 L37.0,80.0 L36.0,80.0 L35.0,79.0 L34.0,79.0 L33.0,78.0 L31.0,78.0 L30.0,77.0 L30.0,76.0 L29.0,76.0 L28.0,75.0 L26.0,75.0 L24.0,73.0 L23.0,73.0 L22.0,72.0 L21.0,72.0 L19.0,70.0 L17.0,70.0 L15.0,68.0 L14.0,68.0 L13.0,67.0 L12.0,67.0 L11.0,66.0 L10.0,66.0 L9.0,65.0 L8.0,65.0 L7.0,64.0 L6.0,64.0 Z M225.0,170.0 L227.0,172.0 L227.0,226.0 L226.0,227.0 L226.0,228.0 L225.0,229.0 L222.0,229.0 L221.0,230.0 L220.0,230.0 L219.0,229.0 L215.0,229.0 L214.0,230.0 L207.0,230.0 L206.0,229.0 L204.0,229.0 L203.0,230.0 L199.0,230.0 L198.0,229.0 L197.0,229.0 L196.0,228.0 L196.0,227.0 L195.0,226.0 L195.0,212.0 L196.0,211.0 L196.0,208.0 L197.0,207.0 L198.0,207.0 L198.0,206.0 L199.0,205.0 L199.0,204.0 L202.0,201.0 L202.0,200.0 L204.0,198.0 L204.0,197.0 L207.0,194.0 L207.0,193.0 L210.0,190.0 L210.0,189.0 L211.0,188.0 L212.0,188.0 L212.0,187.0 L213.0,186.0 L213.0,185.0 L215.0,183.0 L215.0,182.0 L220.0,177.0 L220.0,176.0 L221.0,175.0 L221.0,174.0 Z M225.0,142.0 L227.0,144.0 L227.0,159.0 L226.0,160.0 L226.0,162.0 L225.0,163.0 L224.0,163.0 L224.0,164.0 L222.0,166.0 L222.0,167.0 L220.0,169.0 L220.0,170.0 L218.0,172.0 L218.0,173.0 L217.0,174.0 L216.0,174.0 L216.0,175.0 L213.0,178.0 L213.0,179.0 L211.0,181.0 L211.0,182.0 L210.0,183.0 L210.0,184.0 L209.0,185.0 L208.0,185.0 L208.0,186.0 L205.0,189.0 L205.0,190.0 L204.0,191.0 L204.0,192.0 L199.0,197.0 L199.0,198.0 L197.0,200.0 L195.0,198.0 L195.0,144.0 L197.0,142.0 Z" fill="#111" fill-rule="evenodd" stroke="#111" stroke-width="0.5" stroke-linejoin="round"/></g>
 </defs>`;}
 function draw(){
- const slot=132,groupGap=55,margin=85;
+ const slot=132,groupGap=65,margin=85;
  const ranges=[];let cursor=margin;
  // Mantener también diferenciales sin circuitos, con su representación gráfica.
- for(const g of S.groups){const cs=S.circuits.filter(c=>c.group===g.id),count=Math.max(cs.length,1),width=Math.max(slot*count,225);ranges.push({g,cs,start:cursor,width,mid:cursor+width/2});cursor+=width+groupGap;}
+ for(const g of S.groups){const cs=S.circuits.filter(c=>c.group===g.id),count=Math.max(cs.length,1),width=Math.max(slot*count,g.kind==='ev'?265:225);if(g.kind==='ev')cursor+=60;ranges.push({g,cs,start:cursor,width,mid:cursor+width/2});cursor+=width+groupGap;}
  const right=ranges.at(-1).start+ranges.at(-1).width,spdX=right+35,width=right+(S.spd?235:85),igaX=Math.round((ranges[0].mid+ranges.at(-1).mid)/2);
  const busY=167,difY=224,branchY=319,piaY=368,endY=556,labelsY=591,h=730;
  let t=`<svg id="drawing" xmlns="http://www.w3.org/2000/svg" width="${width}" height="${h}" viewBox="0 0 ${width} ${h}" role="img" aria-label="Esquema unifilar CGMP"><rect width="${width}" height="${h}" fill="white"/>${symbolDefs()}`;
@@ -176,8 +258,10 @@ function draw(){
  t+=txt(spdX+88,282,'Protección',12)+txt(spdX+84,298,'contra',12)+txt(spdX+84,314,'sobretensiones',12)+txt(spdX+84,331,S.spdname==='both'?'permanentes + transitorias':'transitorias',11);}
  for(let k=0;k<ranges.length;k++){
   const r=ranges[k],x=r.mid;
+  if(r.g.kind==='ev'){t+=`<rect x="${r.start-18}" y="${busY+22}" width="${r.width+36}" height="${endY-busY+100}" rx="12" fill="none" stroke="#b87924" stroke-width="1.4" stroke-dasharray="7 5"/>`+txt(x,busY+42,'C13 · Recarga VE · exclusivo',12,'middle','font-weight="bold"');}
   t+=line(x,busY,x,difY-43)+switchSym(x,difY,'dif')+line(x,difY+45,x,branchY);
   t+=txt(x-26,difY-30,`DIF ${k+1}`,12,'end')+txt(x-26,difY-14,`2×${r.g.a} A`,12,'end')+txt(x-26,difY+2,`${r.g.ma} mA`,12,'end');
+  if(r.g.kind==='ev'){t+=txt(x+48,difY-30,r.g.type==='B'?'Tipo B':'Tipo A',11,'start')+txt(x+48,difY-13,r.g.type==='B'?'Protección CC incluida':'RDC-DD 6 mA',10,'start');}
   // Zona receptora para mover circuitos entre diferenciales (se resalta al arrastrar).
   t+=`<rect class="drop-target" fill="none" stroke="none" data-drop-group="${r.g.id}" x="${r.start}" y="${busY-9}" width="${r.width}" height="${branchY-busY+29}" rx="6"/>`;
   const xs=r.cs.map((_,i)=>r.mid+(i-(r.cs.length-1)/2)*slot);
@@ -215,7 +299,10 @@ $('sheet').addEventListener('pointermove',e=>{
  if(Math.hypot(e.clientX-drag.startX,e.clientY-drag.startY)>6)drag.moved=true;
  if(!drag.moved)return;
  const svg=drag.svg;svg.classList.add('dragging');drag.origin.classList.add('moving');
- drag.target=dragTarget(svg,e);setDragTarget(svg,drag.target);
+ drag.target=dragTarget(svg,e);
+ const circuit=S.circuits.find(c=>c.id===drag.id),group=S.groups.find(g=>g.id===drag.target);
+ if(circuit&&group&&(circuit.code==='C13'||group.kind==='ev'))drag.target=null;
+ setDragTarget(svg,drag.target);
  const g=S.groups.findIndex(g=>g.id===drag.target);
  $('dragStatus').textContent=g>=0?`Soltar para asignar a DIF ${g+1}`:'Arrastra el circuito hacia la zona superior de un diferencial';
 });
@@ -226,14 +313,14 @@ function stopDrag(e){
  d.svg.classList.remove('dragging');d.origin.classList.remove('moving');setDragTarget(d.svg,null);
  if(e.type==='pointerup'&&d.moved&&d.target!==null){
   const c=S.circuits.find(c=>c.id===d.id);
-  if(c&&c.group!==d.target){c.group=d.target;render();$('presets').value='custom';const i=S.groups.findIndex(g=>g.id===d.target);$('dragStatus').textContent=`${c.label} asignado al DIF ${i+1}.`;
+  if(c&&c.group!==d.target&&c.code!=='C13'&&S.groups.some(g=>g.id===d.target&&g.kind!=='ev')){c.group=d.target;render();$('presets').value='custom';const i=S.groups.findIndex(g=>g.id===d.target);$('dragStatus').textContent=`${c.label} asignado al DIF ${i+1}.`;
   }else $('dragStatus').textContent='Circuito sin cambios.';
  }else $('dragStatus').textContent='Arrastra un circuito sobre la barra de otro diferencial para cambiar su asignación.';
 }
 $('sheet').addEventListener('pointerup',stopDrag);
 $('sheet').addEventListener('pointercancel',stopDrag);
-function render(){syncAreaCircuit();renderGroups();renderCircuits();draw();warnings();}
-function distribute(){const needed=Math.max(S.groups.length,Math.ceil(S.circuits.length/5),1);while(S.groups.length<needed)S.groups.push(newGroup());S.circuits.forEach((c,i)=>c.group=S.groups[Math.floor(i%needed)].id);render();}
+function render(){syncAreaCircuit();syncEvGroups();renderGroups();renderCircuits();draw();warnings();}
+function distribute(){syncEvGroups();const ordinary=S.circuits.filter(c=>c.code!=='C13');let available=S.groups.filter(g=>g.kind!=='ev');const needed=Math.max(available.length,Math.ceil(ordinary.length/5),1);while(available.length<needed){let g=newGroup();S.groups.splice(available.length,0,g);available.push(g);}ordinary.forEach((c,i)=>c.group=available[Math.floor(i%needed)].id);render();}
 $('presets').addEventListener('change',e=>{if(e.target.value!=='custom')preset(e.target.value);});
 for(const [id,key,mode] of [['iga','iga','number'],['powers','power','number'],['project','project','text'],['spd','spd','checkbox'],['spdname','spdname','text']]){$(id).addEventListener('input',e=>{S[key]=mode==='checkbox'?e.target.checked:mode==='number'?+e.target.value:e.target.value;if(id==='iga'){for(const g of S.groups)g.a=Math.max(g.a,S.iga);renderGroups();}draw();warnings();$('presets').value='custom';});}
 $('area').addEventListener('change',e=>{S.area=Number(e.target.value)||0;syncAreaCircuit();syncControls();render();$('presets').value='custom';});
@@ -242,22 +329,22 @@ $('groupList').addEventListener('change',e=>{
  if(target.matches('[data-assign-c]')){
   const c=S.circuits.find(x=>x.id===+target.dataset.assignC),g=S.groups.find(x=>x.id===+target.dataset.assignG);
   if(!c||!g)return;
-  if(target.checked){c.group=g.id;}
+  if(target.checked&&c.code!=='C13'&&g.kind!=='ev'){c.group=g.id;}
   // Todos los circuitos deben pertenecer a un diferencial: no permitir dejarlo sin asignar.
   render();$('presets').value='custom';return;
  }
  const g=S.groups.find(x=>x.id==target.dataset.g);
- if(g){g[target.dataset.key]=+target.value;draw();warnings();}
+ if(g){if(target.dataset.key==='type'&&g.kind==='ev'){g.type=target.value;g.dcProtection=g.type==='B'?'byB':'external';render();}else{g[target.dataset.key]=+target.value;draw();warnings();}}
 });
 $('groupList').addEventListener('toggle',e=>{
  const d=e.target;if(d.matches?.('[data-assign-details]')){
   const g=S.groups.find(x=>x.id===+d.dataset.assignDetails);if(g)g.assignOpen=d.open;
  }
 },true);
-$('groupList').addEventListener('click',e=>{const btn=e.target.closest('[data-delgroup]');if(!btn)return;const id=+btn.dataset.delgroup;S.groups=S.groups.filter(g=>g.id!==id);S.circuits.forEach(c=>{if(c.group===id)c.group=S.groups[0].id;});render();});
+$('groupList').addEventListener('click',e=>{const btn=e.target.closest('[data-delgroup]');if(!btn)return;const id=+btn.dataset.delgroup;if(S.groups.some(g=>g.id===id&&g.kind==='ev'))return;S.groups=S.groups.filter(g=>g.id!==id);S.circuits.forEach(c=>{if(c.group===id)c.group=S.groups[0].id;});render();});
 $('addGroup').onclick=()=>{S.groups.push(newGroup());render();};$('addCircuit').onclick=()=>{S.circuits.push(mkCircuit('Otro',S.groups[S.groups.length-1].id));render();$('presets').value='custom';};$('autoGroups').onclick=()=>{distribute();$('presets').value='custom';};
 $('circuitList').addEventListener('click',e=>{const b=e.target.closest('[data-del]');if(!b)return;const id=+b.dataset.del;S.circuits=S.circuits.filter(c=>c.id!==id&&c.autoParent!==id);reconcileAutoCircuits();render();});
-$('circuitList').addEventListener('change',e=>{const c=S.circuits.find(x=>x.id==e.target.dataset.c);if(!c)return;const key=e.target.dataset.key;if(key==='code'){const p=catalog[e.target.value];c.code=e.target.value;Object.assign(c,{label:e.target.value,desc:p.name,a:p.a,s:p.s,tube:p.tube,points:0});reconcileAutoCircuits();render();}else{c[key]=['group','a','tube','points'].includes(key)?+e.target.value:e.target.value;if(key==='points'){reconcileAutoCircuits();syncAreaCircuit();render();}else if(key==='group'){render();}else{draw();warnings();}if(key==='label')e.target.closest('.circuit').querySelector('.circuit-head strong').textContent=c.label;} $('presets').value='custom';});
+$('circuitList').addEventListener('change',e=>{const c=S.circuits.find(x=>x.id==e.target.dataset.c);if(!c)return;const key=e.target.dataset.key;if(key==='code'){const p=catalog[e.target.value];c.code=e.target.value;Object.assign(c,{label:e.target.value,desc:p.name,a:p.a,s:p.s,tube:p.tube,points:0,curve:e.target.value==='C13'?'C':undefined});reconcileAutoCircuits();render();}else{c[key]=['group','a','tube','points'].includes(key)?+e.target.value:e.target.value;if(key==='points'){reconcileAutoCircuits();syncAreaCircuit();render();}else if(key==='group'){syncEvGroups();render();}else{draw();warnings();}if(key==='label')e.target.closest('.circuit').querySelector('.circuit-head strong').textContent=c.label;} $('presets').value='custom';});
 $('circuitList').addEventListener('input',e=>{if(e.target.tagName!=='INPUT')return;const c=S.circuits.find(x=>x.id==e.target.dataset.c);if(!c)return;const key=e.target.dataset.key;if(key==='points')return;c[key]=['a','tube'].includes(key)?+e.target.value:e.target.value;draw();warnings();});
 function blobDownload(blob,name){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),800);}
 function slug(){return (S.project||'inel_cgmp').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9_-]+/gi,'_').slice(0,45)||'inel_cgmp';}
@@ -280,8 +367,13 @@ function buildMaterials(){
   const row=entries.get(key);row.qty++;if(reference)row.circuits.push(reference);
  }
  add('Protección general','Interruptor general automático (IGA)',`2 polos · ${S.iga} A`,'Curva, poder de corte y referencia de fabricante');
- S.groups.forEach((g,i)=>add('Protección diferencial','Interruptor diferencial',`2 polos · ${g.a} A · ${g.ma} mA`,'Tipo de diferencial y referencia de fabricante',`DIF ${i+1}`));
- S.circuits.forEach(c=>add('Protección de circuitos','PIA · Interruptor magnetotérmico',`2 polos · ${c.a} A`,'Curva, poder de corte y referencia de fabricante',c.label));
+ S.groups.forEach((g,i)=>{
+  if(g.kind==='ev'){
+   add('Protección diferencial · C13','Diferencial exclusivo para recarga',`2 polos · ${g.a} A · ${g.ma} mA · ${g.type==='B'?'tipo B':'tipo A + RDC-DD 6 mA'}`,'Referencia de fabricante y compatibilidad con estación de recarga',`DIF ${i+1}`);
+   if(g.type==='A+RDC-DD')add('Protección CC · C13','Dispositivo RDC-DD, 6 mA CC', 'IEC 62955 · desconexión de componente continua','Verificar integración en SAVE o equipo externo compatible','C13');
+  }else add('Protección diferencial','Interruptor diferencial',`2 polos · ${g.a} A · ${g.ma} mA`,'Tipo de diferencial y referencia de fabricante',`DIF ${i+1}`);
+ });
+ S.circuits.forEach(c=>add('Protección de circuitos','PIA · Interruptor magnetotérmico',`2 polos · ${c.a} A${c.code==='C13'?` · curva ${c.curve||'C'}`:''}` ,c.code==='C13'?'Poder de corte, In/Iz y referencia de fabricante':'Curva, poder de corte y referencia de fabricante',c.label));
  if(S.spd)add('Sobretensiones','Protección contra sobretensiones',S.spdname==='both'?'Conjunto permanentes + transitorias':'Protección contra sobretensiones transitorias','Tipo/clase, parámetros de protección y referencia de fabricante');
  return {items:Array.from(entries.values()),circuits:S.circuits.map(c=>({label:c.label,desc:c.desc,group:S.groups.findIndex(g=>g.id===c.group)+1,pia:c.a,section:c.s,tube:c.tube}))};
 }
